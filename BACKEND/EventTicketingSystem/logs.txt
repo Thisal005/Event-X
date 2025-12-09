@@ -1,0 +1,686 @@
+2024-12-10T17:09:00.813217100: New configuration saved
+2024-12-10T17:09:04.470710100: System started with 100 initial tickets.
+2024-12-10T17:10:50.802654200: New configuration saved
+2024-12-10T17:10:50.803654400: System stopped.
+2024-12-10T17:11:10.410431900: System started with 100 initial tickets.
+2024-12-10T17:19:39.238617100: New configuration saved
+2024-12-10T17:19:48.262748700: System started with 100 initial tickets.
+2024-12-10T17:21:31.925523100: Created Customer Account: ID :- 200340 com.oop.EventTicketingSystem.model.Account@2d801c4
+2024-12-10T17:21:50.490143100: Created Vendor Account: ID :- 100302 com.oop.EventTicketingSystem.model.Account@71890fc5
+2024-12-10T17:23:48.744688: Vendor 100302Added 50 tickets.
+2024-12-10T17:24:13.239330200: Vendor 100302Added 500 tickets.
+2024-12-10T17:24:50.932158200: New configuration saved
+2024-12-10T17:24:50.933157300: System stopped.
+2024-12-10T17:29:38.320933300: New configuration saved
+2024-12-10T17:29:42.157544200: System started with 100 initial tickets.
+2024-12-10T17:29:56.067640800: Vendor 100302Added 500 tickets.
+2024-12-10T17:31:59.056052800: New configuration saved
+2024-12-10T17:32:03.028745400: System started with 10 initial tickets.
+2024-12-10T17:33:26.448324600: Vendor 100302Added 5 tickets.
+2024-12-10T17:33:27.456972600: Customer 200340 bought 12 tickets.
+2024-12-10T17:34:24.781024100: New configuration saved
+2024-12-10T17:34:27.577977300: System started with 10 initial tickets.
+2024-12-10T17:34:50.313936100: New configuration saved
+2024-12-10T17:34:50.314888700: System stopped.
+2024-12-10T17:35:16.558496300: New configuration saved
+2024-12-10T17:35:19.981031800: System started with 5 initial tickets.
+2024-12-10T17:37:28.254545100: New configuration saved
+2024-12-10T17:37:28.254545100: System stopped.
+2024-12-10T17:42:33.217001700: New configuration saved
+2024-12-10T17:42:36.727651400: System started with 5 initial tickets.
+2024-12-10T17:42:46.369196200: New configuration saved
+2024-12-10T17:42:46.369196200: System stopped.
+2024-12-10T17:43:17.258841900: New configuration saved
+2024-12-10T17:43:20.679825700: System started with 100 initial tickets.
+2024-12-10T17:43:38.297249500: Vendor 100302 added 500 tickets.
+2024-12-10T17:44:22.316179200: New configuration saved
+2024-12-10T17:44:28.021435900: System started with 10 initial tickets.
+2024-12-10T17:45:11.807497100: New configuration saved
+2024-12-10T17:45:15.531979600: System started with 100 initial tickets.
+2024-12-10T17:45:21.547031100: Vendor 100302 added 500 tickets.
+2024-12-10T17:49:35.273243100: New configuration saved
+2024-12-10T17:49:40.355854300: System started with 10 initial tickets.
+2024-12-10T17:49:47.456605200: New configuration saved
+2024-12-10T17:49:47.457603700: System stopped.
+2024-12-10T17:50:10.179555400: New configuration saved
+2024-12-10T17:50:13.683804500: System started with 100 initial tickets.
+2024-12-10T17:50:19.069943700: Vendor 100302 added 500 tickets.
+2024-12-10T17:50:51.932775300: New configuration saved
+2024-12-10T17:50:54.484384: System started with 100 initial tickets.
+2024-12-10T17:50:59.473916900: Vendor 100302 added 500 tickets.
+2024-12-10T17:51:06.377729400: New configuration saved
+2024-12-10T17:51:06.378241100: System stopped.
+2024-12-10T17:54:02.602689: New configuration saved
+2024-12-10T17:54:06.749391600: System started with 10 initial tickets.
+2024-12-10T17:54:14.402702300: New configuration saved
+2024-12-10T17:54:14.403743300: System stopped.
+2024-12-10T17:54:33.566037900: New configuration saved
+2024-12-10T17:54:39.278125500: System started with 100 initial tickets.
+2024-12-10T17:54:45.572079500: Vendor 100302 Added 500 tickets.
+2024-12-10T17:57:06.202666700: New configuration saved
+2024-12-10T17:57:09.251071700: System started with 5 initial tickets.
+2024-12-10T17:57:25.945268800: New configuration saved
+2024-12-10T17:57:25.945268800: System stopped.
+2024-12-10T17:57:48.661288600: New configuration saved
+2024-12-10T17:57:51.506811500: System started with 100 initial tickets.
+2024-12-10T17:57:57.662108700: Vendor 100302 Added 500 tickets.
+2024-12-10T18:02:20.225902200: New configuration saved
+2024-12-10T18:02:24.427469: System started with 100 initial tickets.
+2024-12-10T18:02:34.617826300: Vendor 100302 Added 500 tickets.
+2024-12-10T18:04:22.923850800: New configuration saved
+2024-12-10T18:04:27.174532: System started with 100 initial tickets.
+2024-12-10T18:04:33.397334300: Vendor 100302 Added 500 tickets.
+2024-12-10T18:58:03.117680600: New configuration saved
+2024-12-10T18:58:06.805996500: System started with 100 initial tickets.
+2024-12-10T18:58:13.289130200: Vendor 100302 Added 500 tickets.
+2024-12-10T19:06:02.458822700: New configuration saved
+2024-12-10T19:06:05.319591400: System started with 100 initial tickets.
+2024-12-10T19:06:11.451381200: Vendor 100302 Added 500 tickets.
+2024-12-10T19:12:11.012696500: New configuration saved
+2024-12-10T19:12:20.241186700: System started with 100 initial tickets.
+2024-12-10T19:12:31.124999400: Vendor 100302 Added 500 tickets.
+2024-12-10T19:13:36.758669300: System started with 100 initial tickets.
+2024-12-10T19:13:51.344414100: Vendor 100302 Added 500 tickets.
+2024-12-10T19:14:04.021549100: New configuration saved
+2024-12-10T19:14:04.022549300: System stopped.
+2024-12-10T19:14:26.083964100: System started with 500 initial tickets.
+2024-12-10T19:14:35.639347: Vendor 100302 Added 500 tickets.
+2024-12-10T19:14:52.218446200: New configuration saved
+2024-12-10T19:14:52.219525700: System stopped.
+2024-12-10T19:16:25.657257700: New configuration saved
+2024-12-10T19:16:30.588908: System started with 5 initial tickets.
+2024-12-10T19:16:40.952241500: New configuration saved
+2024-12-10T19:16:40.953257200: System stopped.
+2024-12-10T19:18:59.635428500: New configuration saved
+2024-12-10T19:19:05.032077700: System started with 5 initial tickets.
+2024-12-10T19:26:59.198183600: New configuration saved
+2024-12-10T19:27:02.418871: System started with 4 initial tickets.
+2024-12-10T19:27:17.086581800: New configuration saved
+2024-12-10T19:27:17.087581500: System stopped.
+2024-12-10T19:28:43.679195400: New configuration saved
+2024-12-10T19:28:46.434828100: System started with 100 initial tickets.
+2024-12-10T19:28:49.436509500: New configuration saved
+2024-12-10T19:28:49.437513300: System stopped.
+2024-12-10T19:30:05.876812200: New configuration saved
+2024-12-10T19:30:09.653706400: System started with 10 initial tickets.
+2024-12-10T19:30:12.033820500: New configuration saved
+2024-12-10T19:30:12.033820500: System stopped.
+2024-12-10T19:31:58.938815900: New configuration saved
+2024-12-10T19:32:01.317148900: System started with 100 initial tickets.
+2024-12-10T19:32:03.592756300: New configuration saved
+2024-12-10T19:32:03.593761800: System stopped.
+2024-12-10T19:32:32.003885100: New configuration saved
+2024-12-10T19:32:35.084629100: System started with 5 initial tickets.
+2024-12-10T19:32:37.959273: New configuration saved
+2024-12-10T19:32:37.960278300: System stopped.
+2024-12-10T19:33:51.571014900: New configuration saved
+2024-12-10T19:33:55.798561200: System started with 5 initial tickets.
+2024-12-10T19:34:02.549584400: New configuration saved
+2024-12-10T19:34:02.550585600: System stopped.
+2024-12-10T19:34:29.068253: New configuration saved
+2024-12-10T19:34:35.231614400: System started with 100 initial tickets.
+2024-12-10T19:34:42.763734200: Vendor 100302 Added 500 tickets.
+2024-12-10T19:35:33.730278600: New configuration saved
+2024-12-10T19:35:38.195498200: System started with 100 initial tickets.
+2024-12-10T19:35:46.601762200: Vendor 100302 Added 500 tickets.
+2024-12-10T19:42:52.525040700: New configuration saved
+2024-12-10T19:42:55.643846: System started with 5 initial tickets.
+2024-12-10T19:43:00.475448400: New configuration saved
+2024-12-10T19:43:00.476607600: System stopped.
+2024-12-10T19:43:21.849954300: New configuration saved
+2024-12-10T19:43:23.879024500: System started with 100 initial tickets.
+2024-12-10T19:43:29.181496500: Vendor 100302 Added 500 tickets.
+2024-12-10T19:43:49.945698100: New configuration saved
+2024-12-10T19:43:53.028132300: System started with 100 initial tickets.
+2024-12-10T19:44:01.050192700: Vendor 100302 Added 500 tickets.
+2024-12-10T19:45:20.748456300: New configuration saved
+2024-12-10T19:45:23.491364300: System started with 100 initial tickets.
+2024-12-10T19:45:30.303368600: Vendor 100302 Added 500 tickets.
+2024-12-10T19:46:07.962508200: New configuration saved
+2024-12-10T19:46:11.068376200: System started with 100 initial tickets.
+2024-12-10T19:46:16.243607: Vendor 100302 Added 500 tickets.
+2024-12-10T19:51:04.580105800: New configuration saved
+2024-12-10T19:51:07.306373200: System started with 4 initial tickets.
+2024-12-10T19:51:31.246930900: New configuration saved
+2024-12-10T19:51:31.248405400: System stopped.
+2024-12-10T19:51:55.020529600: New configuration saved
+2024-12-10T19:52:00.501070900: System started with 100 initial tickets.
+2024-12-10T19:52:07.879112400: Vendor 100302 Added 500 tickets.
+2024-12-10T19:52:12.551943800: New configuration saved
+2024-12-10T19:52:12.552938500: System stopped.
+2024-12-10T19:52:47.054175500: New configuration saved
+2024-12-10T19:52:50.147090800: System started with 100 initial tickets.
+2024-12-10T19:52:57.425441500: Vendor 100302 Added 500 tickets.
+2024-12-10T19:53:00.752527100: New configuration saved
+2024-12-10T19:53:00.752527100: System stopped.
+2024-12-10T19:54:07.627958200: New configuration saved
+2024-12-10T19:54:09.905394: System started with 4 initial tickets.
+2024-12-10T19:54:15.413093700: New configuration saved
+2024-12-10T19:54:15.414099600: System stopped.
+2024-12-10T19:55:13.742539500: New configuration saved
+2024-12-10T19:55:17.923753200: System started with 100 initial tickets.
+2024-12-10T19:55:26.281469: Vendor 100302 Added 500 tickets.
+2024-12-10T19:55:32.321815300: New configuration saved
+2024-12-10T19:55:32.322816700: System stopped.
+2024-12-10T19:58:47.309224700: New configuration saved
+2024-12-10T19:58:50.657419500: System started with 100 initial tickets.
+2024-12-10T19:58:58.619418: Vendor 100302 Added 500 tickets.
+2024-12-10T19:59:02.016979600: New configuration saved
+2024-12-10T19:59:02.017980800: System stopped.
+2024-12-10T20:01:02.619913300: New configuration saved
+2024-12-10T20:01:04.716182300: System started with 100 initial tickets.
+2024-12-10T20:01:10.612120600: Vendor 100302 Added 500 tickets.
+2024-12-10T20:11:29.672138100: New configuration saved
+2024-12-10T20:11:33.537376700: System started with 100 initial tickets.
+2024-12-10T20:11:38.357157300: New configuration saved
+2024-12-10T20:11:38.464247100: New configuration saved
+2024-12-10T20:11:38.580521300: New configuration saved
+2024-12-10T20:11:38.695036300: New configuration saved
+2024-12-10T20:11:38.802280900: New configuration saved
+2024-12-10T20:11:38.910299600: New configuration saved
+2024-12-10T20:11:39.023981100: New configuration saved
+2024-12-10T20:11:39.129720900: New configuration saved
+2024-12-10T20:11:39.240106200: New configuration saved
+2024-12-10T20:11:39.345433100: New configuration saved
+2024-12-10T20:11:52.912518400: New configuration saved
+2024-12-10T20:11:52.913530400: System stopped.
+2024-12-10T20:13:56.994588700: New configuration saved
+2024-12-10T20:14:02.518916700: System started with 100 initial tickets.
+2024-12-10T20:14:12.253968: Vendor 100302 Added 500 tickets.
+2024-12-10T20:14:18.607833900: New configuration saved
+2024-12-10T20:14:18.608825100: System stopped.
+2024-12-10T20:15:08.654548700: New configuration saved
+2024-12-10T20:15:14.823837400: System started with 100 initial tickets.
+2024-12-10T20:15:22.497789700: Vendor 100302 Added 500 tickets.
+2024-12-10T20:15:26.029912900: New configuration saved
+2024-12-10T20:15:26.029912900: System stopped.
+2024-12-10T20:18:34.881911500: New configuration saved
+2024-12-10T20:18:45.460539700: System started with 4 initial tickets.
+2024-12-10T20:18:55.543008800: Vendor 100302 Added 500 tickets.
+2024-12-10T20:18:58.668464600: New configuration saved
+2024-12-10T20:18:58.668464600: System stopped.
+2024-12-10T20:19:40.321308200: New configuration saved
+2024-12-10T20:19:44.101266500: System started with 100 initial tickets.
+2024-12-10T20:19:50.173883900: Vendor 100302 Added 500 tickets.
+2024-12-10T20:20:05.697590: New configuration saved
+2024-12-10T20:20:05.698302700: System stopped.
+2024-12-10T20:21:10.277871400: New configuration saved
+2024-12-10T20:21:12.593878500: System started with 100 initial tickets.
+2024-12-10T20:21:32.028762300: Vendor 100302 Added 1000 tickets.
+2024-12-10T20:21:50.524726800: New configuration saved
+2024-12-10T20:21:50.525731600: System stopped.
+2024-12-10T20:40:32.505302400: New configuration saved
+2024-12-10T20:40:34.888226500: System started with 100 initial tickets.
+2024-12-10T20:40:41.579389500: Vendor 100302Added 1000 tickets.
+2024-12-10T20:40:53.786507800: New configuration saved
+2024-12-10T20:40:53.786507800: System stopped.
+2024-12-10T20:41:41.408150400: New configuration saved
+2024-12-10T20:41:43.878161900: System started with 100 initial tickets.
+2024-12-10T20:41:50.218201300: Vendor 100302Added 1000 tickets.
+2024-12-10T20:41:59.030409100: New configuration saved
+2024-12-10T20:41:59.031407100: System stopped.
+2024-12-10T20:42:45.513034200: New configuration saved
+2024-12-10T20:43:44.235042800: New configuration saved
+2024-12-10T20:43:46.782908900: System started with 100 initial tickets.
+2024-12-10T20:46:52.143009800: New configuration saved
+2024-12-10T20:46:54.869454600: System started with 100 initial tickets.
+2024-12-10T20:47:53.211976200: Vendor 100302Added 10 tickets.
+2024-12-10T20:48:01.306404: Customer 200340 bought 10 tickets.
+2024-12-10T20:48:42.005634: New configuration saved
+2024-12-10T20:48:46.013087800: System started with 100 initial tickets.
+2024-12-10T20:48:48.432578700: New configuration saved
+2024-12-10T20:48:48.433534500: System stopped.
+2024-12-10T20:50:54.956752400: New configuration saved
+2024-12-10T20:51:02.705884900: New configuration saved
+2024-12-10T20:51:02.705884900: System stopped.
+2024-12-10T20:51:48.559669500: New configuration saved
+2024-12-10T20:51:57.797437800: New configuration saved
+2024-12-10T20:51:57.798435500: System stopped.
+2024-12-10T20:52:18.206310900: New configuration saved
+2024-12-10T20:52:21.208182500: System started with 100 initial tickets.
+2024-12-10T20:52:38.209227: Vendor 100302Added 10 tickets.
+2024-12-10T20:52:54.511549500: New configuration saved
+2024-12-10T20:52:54.511549500: System stopped.
+2024-12-10T20:57:20.379744300: New configuration saved
+2024-12-10T20:57:24.040991900: System started with 100 initial tickets.
+2024-12-10T21:06:51.832374700: New configuration saved
+2024-12-10T21:06:54.081724600: System started with 100 initial tickets.
+2024-12-10T21:07:00.677274: Vendor 100302Added 10 tickets.
+2024-12-10T21:07:44.733257100: Customer 200340 bought 10 tickets.
+2024-12-10T21:08:39.707709900: New configuration saved
+2024-12-10T21:08:41.869357800: System started with 100 initial tickets.
+2024-12-10T21:09:31.298700500: System started with 100 initial tickets.
+2024-12-10T21:11:08.551387700: System started with 100 initial tickets.
+2024-12-10T21:12:33.111728300: System started with 100 initial tickets.
+2024-12-10T21:13:47.183214200: System started with 100 initial tickets.
+2024-12-10T21:15:40.303946400: System started with 100 initial tickets.
+2024-12-10T21:22:32.246801900: New configuration saved
+2024-12-10T21:22:35.662622400: System started with 100 initial tickets.
+2024-12-10T21:23:50.242112200: Vendor 100340Added 100 tickets.
+2024-12-10T21:24:00.005541400: New configuration saved
+2024-12-10T21:24:00.006540900: System stopped.
+2024-12-10T21:26:58.360302400: New configuration saved
+2024-12-10T21:27:00.225857200: System started with 100 initial tickets.
+2024-12-10T21:27:24.842724700: Vendor 100340Added 100 tickets.
+2024-12-10T21:27:29.773158300: New configuration saved
+2024-12-10T21:27:29.774160200: System stopped.
+2024-12-10T21:27:48.205143500: System started with 200 initial tickets.
+2024-12-10T21:32:02.926648: New configuration saved
+2024-12-10T21:32:05.717766600: System started with 100 initial tickets.
+2024-12-10T21:35:59.145648600: New configuration saved
+2024-12-10T21:36:02.878734900: System started with 100 initial tickets.
+2024-12-10T21:36:26.321798: Customer 200340 bought 10 tickets.
+2024-12-10T21:36:38.293248600: New configuration saved
+2024-12-10T21:36:38.294250200: System stopped.
+2024-12-10T21:37:01.061825800: System started with 90 initial tickets.
+2024-12-10T21:38:08.427823: Vendor 100302Added 50 tickets.
+2024-12-10T21:38:22.545465400: New configuration saved
+2024-12-10T21:38:22.546620300: System stopped.
+2024-12-10T21:55:00.905963200: New configuration saved
+2024-12-10T21:55:08.967565500: System started with 100 initial tickets.
+2024-12-10T21:56:27.628805400: System started with 100 initial tickets.
+2024-12-10T22:28:10.335946100: System started with 100 initial tickets.
+2024-12-10T22:28:28.404326500: Vendor 100302Added 50 tickets.
+2024-12-10T22:28:56.471568500: Customer 200340 bought 10 tickets.
+2024-12-10T22:35:51.116330800: New configuration saved
+2024-12-10T22:35:58.363094400: System started with 100 initial tickets.
+2024-12-10T22:36:23.612526500: Vendor 100302Added 50 tickets.
+2024-12-10T22:36:35.767032300: System stopped.
+2024-12-10T22:37:20.303332: New configuration saved
+2024-12-10T22:37:23.632930900: System started with 100 initial tickets.
+2024-12-10T22:37:39.389615900: Vendor 100302Added 50 tickets.
+2024-12-10T22:37:44.305675300: New configuration saved
+2024-12-10T22:37:44.306709900: System stopped.
+2024-12-10T22:38:42.843116700: System started with 150 initial tickets.
+2024-12-10T22:38:46.548465900: New configuration saved
+2024-12-10T22:38:46.549463400: System stopped.
+2024-12-10T22:39:02.910776200: Vendor 100302Added 50 tickets.
+2024-12-10T22:39:32.757798200: Vendor 100302Added 50 tickets.
+2024-12-10T22:41:07.519294100: System started with 150 initial tickets.
+2024-12-10T22:41:30.056738100: Customer 200340 bought 100 tickets.
+2024-12-10T22:41:47.014118200: Customer 200340 bought 100 tickets.
+2024-12-10T22:42:14.890672600: Vendor 100302Added 50 tickets.
+2024-12-10T22:46:59.793584800: New configuration saved
+2024-12-10T22:46:59.794581300: System stopped.
+2024-12-10T22:54:38.489653800: New configuration saved
+2024-12-10T22:54:43.212668100: System started with 100 initial tickets.
+2024-12-10T22:55:01.973143200: Vendor 100302 added 50 tickets.
+2024-12-10T22:55:22.435424400: Vendor 100302 added 60 tickets.
+2024-12-10T22:56:15.072170900: System started with 100 initial tickets.
+2024-12-10T22:56:51.119320700: New configuration saved
+2024-12-10T22:56:51.119320700: System stopped.
+2024-12-10T23:01:21.504280100: New configuration saved
+2024-12-10T23:01:25.999706400: System started with 100 initial tickets.
+2024-12-10T23:02:04.146485600: Vendor 100302 added 50 tickets.
+2024-12-10T23:02:21.128666300: Vendor 100302 added 60 tickets.
+2024-12-10T23:03:23.802158: System started with 100 initial tickets.
+2024-12-10T23:03:47.862363500: New configuration saved
+2024-12-10T23:03:47.863365: System stopped.
+2024-12-10T23:06:43.029463200: New configuration saved
+2024-12-10T23:06:46.446306300: System started with 100 initial tickets.
+2024-12-10T23:06:54.387234600: Vendor 100302 added 60 tickets.
+2024-12-10T23:08:32.690961400: System started with 100 initial tickets.
+2024-12-10T23:08:37.245512800: Vendor 100302 added 60 tickets.
+2024-12-10T23:09:37.696187700: System started with 100 initial tickets.
+2024-12-10T23:09:50.154251600: Vendor 100302 added 60 tickets.
+2024-12-10T23:10:03.766130800: Vendor 100302 added 60 tickets.
+2024-12-10T23:12:54.830764200: System started with 100 initial tickets.
+2024-12-10T23:13:18.970854100: Vendor 100302 added 120 tickets.
+2024-12-10T23:26:19.749121300: New configuration saved
+2024-12-10T23:26:22.636157200: System started with 100 initial tickets.
+2024-12-10T23:26:32.897196800: Vendor 100302 added 120 tickets.
+2024-12-10T23:30:07.027453800: New configuration saved
+2024-12-10T23:30:10.746968: System started with 100 initial tickets.
+2024-12-10T23:30:26.688129900: Vendor 100302 added 1200 tickets.
+2024-12-10T23:31:39.433578400: System started with 100 initial tickets.
+2024-12-10T23:31:42.558555100: Vendor 100302Added 1200 tickets.
+2024-12-10T23:36:31.871945600: System started with 100 initial tickets.
+2024-12-10T23:36:38.769502300: Vendor 100302 added 1200 tickets.
+2024-12-10T23:39:59.850945700: New configuration saved
+2024-12-10T23:40:02.763298100: System started with 100 initial tickets.
+2024-12-10T23:40:14.258216600: Vendor 100302 added 60 tickets.
+2024-12-10T23:50:35.804183500: New configuration saved
+2024-12-10T23:50:39.845736300: System started with 100 initial tickets.
+2024-12-10T23:50:54.923824800: Vendor 100302 added 60 tickets.
+2024-12-10T23:53:04.147036100: System started with 100 initial tickets.
+2024-12-10T23:54:24.786543800: System started with 100 initial tickets.
+2024-12-10T23:55:13.710257400: System started with 100 initial tickets.
+2024-12-10T23:56:49.501963400: System started with 100 initial tickets.
+2024-12-10T23:57:49.822225800: New configuration saved
+2024-12-10T23:57:49.823225600: System stopped.
+2024-12-10T23:58:14.367946: System started with 120 initial tickets.
+2024-12-10T23:58:56.357795700: New configuration saved
+2024-12-10T23:58:56.358795300: System stopped.
+2024-12-11T00:05:25.411694200: New configuration saved
+2024-12-11T00:05:28.630413: System started with 100 initial tickets.
+2024-12-11T00:06:14.429640200: New configuration saved
+2024-12-11T00:06:14.430638600: System stopped.
+2024-12-11T00:23:32.274755300: New configuration saved
+2024-12-11T00:23:36.162423800: System started with 100 initial tickets.
+2024-12-11T00:25:18.635495500: System started with 100 initial tickets.
+2024-12-11T00:25:55.261394: System started with 100 initial tickets.
+2024-12-11T00:26:42.427312400: System started with 100 initial tickets.
+2024-12-11T00:26:51.239841900: Vendor 100302Added 80 tickets.
+2024-12-11T00:27:08.375095500: New configuration saved
+2024-12-11T00:27:08.376096600: System stopped.
+2024-12-11T00:56:56.240142: New configuration saved
+2024-12-11T00:57:07.632087200: System started with 100 initial tickets.
+2024-12-11T00:57:19.446245: Vendor 100302 added 80 tickets.
+2024-12-11T01:00:41.290776100: Created Customer Account: ID :- 200253 com.oop.EventTicketingSystem.model.Account@66cda02d
+2024-12-11T01:01:53.118182200: Customer 200253 bought 20 tickets.
+2024-12-11T01:02:48.257668900: Customer 200253 bought 170 tickets.
+2024-12-11T01:02:50.172859400: Vendor 100302 added 50 tickets.
+2024-12-11T01:03:54.848950: Customer 200253 bought 10 tickets.
+2024-12-11T01:04:03.666361100: New configuration saved
+2024-12-11T01:04:03.667351100: System stopped.
+2024-12-11T09:14:19.475262200: Created Customer Account: ID :- 200258 com.oop.EventTicketingSystem.model.Account@4243e9ac
+2024-12-11T11:48:06.011886900: New configuration saved
+2024-12-11T11:48:06.014882900: New configuration saved
+2024-12-11T11:48:06.019230: System started with configuration: Configuration{totalTickets=1, ticketReleaseRate=1, customerRetrievalRate=1, maxTicketCapacity=1}
+2024-12-11T11:48:42.048770600: New configuration saved
+2024-12-11T11:48:42.051756500: New configuration saved
+2024-12-11T11:48:42.053752800: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=200}
+2024-12-11T12:34:04.697262200: New configuration saved
+2024-12-11T12:34:04.699255100: New configuration saved
+2024-12-11T12:34:04.703198100: System started with configuration: Configuration{totalTickets=200, ticketReleaseRate=20, customerRetrievalRate=1000, maxTicketCapacity=500}
+2024-12-11T12:34:42.018500800: New configuration saved
+2024-12-11T12:34:42.021046400: New configuration saved
+2024-12-11T12:34:42.022056300: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=200}
+2024-12-11T13:16:00.058487600: Vendor 100302 added 50 tickets.
+2024-12-11T13:16:41.453008: Customer 200253 bought 20 tickets.
+2024-12-11T13:23:48.194764100: Vendor 100302 added 50 tickets.
+2024-12-11T13:23:48.194764100: Customer 200253 bought 20 tickets.
+2024-12-11T13:24:02.301383100: Customer 200253 bought 30 tickets.
+2024-12-11T14:10:15.263257100: Created Vendor Account: ID :- 100272 com.oop.EventTicketingSystem.model.Account@4891770d
+2024-12-11T16:52:04.015225500: Created Customer Account: ID :- 200300 com.oop.EventTicketingSystem.model.Account@7f9e569a
+2024-12-11T16:52:15.281573200: Created Customer Account: ID :- 200392 com.oop.EventTicketingSystem.model.Account@6490f020
+2024-12-11T16:52:27.649738500: Created Vendor Account: ID :- 100327 com.oop.EventTicketingSystem.model.Account@27a37288
+2024-12-11T16:58:59.932144600: Created Customer Account: ID :- 200273 com.oop.EventTicketingSystem.model.Account@151832a5
+2024-12-11T17:03:42.724941900: Created Customer Account: ID :- 200339 com.oop.EventTicketingSystem.model.Account@6490f020
+2024-12-11T17:04:34.451763200: Created Customer Account: ID :- 200362 com.oop.EventTicketingSystem.model.Account@308f5337
+2024-12-11T17:05:04.044103500: Created Vendor Account: ID :- 100307 com.oop.EventTicketingSystem.model.Account@71a07ede
+2024-12-11T17:11:36.411874: Created Vendor Account: ID :- 100389 com.oop.EventTicketingSystem.model.Account@58940ab3
+2024-12-11T17:13:07.812772900: Created Customer Account: ID :- 200445 com.oop.EventTicketingSystem.model.Account@5e28ede3
+2024-12-11T17:20:15.744694200: Created Customer Account: ID :- 200497 com.oop.EventTicketingSystem.model.Account@459d0d73
+2024-12-11T19:30:35.750374: New configuration saved
+2024-12-11T19:30:35.753373800: New configuration saved
+2024-12-11T19:30:35.757572400: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=200}
+2024-12-11T19:40:22.896662200: New configuration saved
+2024-12-11T19:40:22.898814100: New configuration saved
+2024-12-11T19:40:22.904318300: System started with configuration: Configuration{totalTickets=200, ticketReleaseRate=10, customerRetrievalRate=1000, maxTicketCapacity=300}
+2024-12-11T19:42:13.867152600: New configuration saved
+2024-12-11T19:42:13.868152600: New configuration saved
+2024-12-11T19:42:13.871154200: System started with configuration: Configuration{totalTickets=200, ticketReleaseRate=10, customerRetrievalRate=1000, maxTicketCapacity=300}
+2024-12-11T19:49:54.774407700: New configuration saved
+2024-12-11T19:49:54.776408400: New configuration saved
+2024-12-11T19:49:54.779407800: System started with configuration: Configuration{totalTickets=200, ticketReleaseRate=10, customerRetrievalRate=1000, maxTicketCapacity=300}
+2024-12-11T19:50:05.606502900: New configuration saved
+2024-12-11T19:50:05.608514: New configuration saved
+2024-12-11T19:50:05.609457400: System started with configuration: Configuration{totalTickets=250, ticketReleaseRate=10, customerRetrievalRate=1000, maxTicketCapacity=300}
+2024-12-11T19:51:01.166182700: New configuration saved
+2024-12-11T19:51:01.168185: New configuration saved
+2024-12-11T19:51:01.169182400: System started with configuration: Configuration{totalTickets=250, ticketReleaseRate=10, customerRetrievalRate=1000, maxTicketCapacity=300}
+2024-12-11T19:55:13.575178700: New configuration saved
+2024-12-11T19:55:13.576172600: New configuration saved
+2024-12-11T19:55:13.579398600: System started with configuration: Configuration{totalTickets=250, ticketReleaseRate=10, customerRetrievalRate=1000, maxTicketCapacity=300}
+2024-12-11T19:57:30.281695: New configuration saved
+2024-12-11T19:57:30.282693: New configuration saved
+2024-12-11T19:57:30.286847600: System started with configuration: Configuration{totalTickets=350, ticketReleaseRate=50, customerRetrievalRate=1000, maxTicketCapacity=500}
+2024-12-11T20:00:14.864650700: New configuration saved
+2024-12-11T20:00:14.866180300: New configuration saved
+2024-12-11T20:00:14.866693400: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=10, customerRetrievalRate=1000, maxTicketCapacity=200}
+2024-12-11T20:07:13.742546300: New configuration saved
+2024-12-11T20:07:13.744546: New configuration saved
+2024-12-11T20:07:13.748546400: System started with configuration: Configuration{totalTickets=1, ticketReleaseRate=1, customerRetrievalRate=1, maxTicketCapacity=1}
+2024-12-11T20:07:32.820631: New configuration saved
+2024-12-11T20:07:32.821631100: New configuration saved
+2024-12-11T20:07:32.823630: System started with configuration: Configuration{totalTickets=1, ticketReleaseRate=1, customerRetrievalRate=1, maxTicketCapacity=1}
+2024-12-11T20:07:43.538937200: New configuration saved
+2024-12-11T20:07:43.539938400: New configuration saved
+2024-12-11T20:07:43.540934700: System started with configuration: Configuration{totalTickets=1, ticketReleaseRate=1, customerRetrievalRate=1, maxTicketCapacity=1}
+2024-12-11T20:41:27.138436600: New configuration saved
+2024-12-11T20:41:27.139458900: New configuration saved
+2024-12-11T20:41:27.144446400: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=300}
+2024-12-11T20:48:00.347899200: New configuration saved
+2024-12-11T20:48:00.348898700: New configuration saved
+2024-12-11T20:48:00.350898200: System started with configuration: Configuration{totalTickets=10, ticketReleaseRate=10, customerRetrievalRate=10, maxTicketCapacity=10}
+2024-12-11T21:09:25.475835500: New configuration saved
+2024-12-11T21:09:25.477834200: New configuration saved
+2024-12-11T21:09:25.483019600: System started with configuration: Configuration{totalTickets=10, ticketReleaseRate=1, customerRetrievalRate=10, maxTicketCapacity=100}
+2024-12-11T21:10:21.441986900: New configuration saved
+2024-12-11T21:10:21.442983600: New configuration saved
+2024-12-11T21:10:21.445777800: System started with configuration: Configuration{totalTickets=10, ticketReleaseRate=1, customerRetrievalRate=10, maxTicketCapacity=100}
+2024-12-11T21:15:07.002311400: New configuration saved
+2024-12-11T21:15:07.004618900: New configuration saved
+2024-12-11T21:15:07.008651: System started with configuration: Configuration{totalTickets=10, ticketReleaseRate=1, customerRetrievalRate=10, maxTicketCapacity=100}
+2024-12-11T21:18:58.226290200: New configuration saved
+2024-12-11T21:18:58.227291300: New configuration saved
+2024-12-11T21:18:58.231256500: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=10, customerRetrievalRate=1000, maxTicketCapacity=1000}
+2024-12-11T21:30:03.704416100: New configuration saved
+2024-12-11T21:30:03.706414300: New configuration saved
+2024-12-11T21:30:03.709424: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=10, customerRetrievalRate=1000, maxTicketCapacity=1000}
+2024-12-11T21:32:13.827580600: Loaded configuration from file: Configuration{totalTickets=100, ticketReleaseRate=10, customerRetrievalRate=1000, maxTicketCapacity=1000}
+2024-12-11T21:33:31.254325: Loaded configuration from file: Configuration{totalTickets=100, ticketReleaseRate=10, customerRetrievalRate=1000, maxTicketCapacity=1000}
+2024-12-11T21:34:46.500628600: New configuration saved
+2024-12-11T21:34:46.502102500: New configuration saved
+2024-12-11T21:34:46.503120400: System started with configuration: Configuration{totalTickets=1, ticketReleaseRate=1, customerRetrievalRate=1, maxTicketCapacity=1}
+2024-12-11T21:35:57.989075500: Loaded configuration from file: Configuration{totalTickets=1, ticketReleaseRate=1, customerRetrievalRate=1, maxTicketCapacity=1}
+2024-12-11T21:36:39.128141800: Loaded configuration from file: Configuration{totalTickets=1, ticketReleaseRate=1, customerRetrievalRate=1, maxTicketCapacity=1}
+2024-12-11T21:36:42.692469: Loaded configuration from file: Configuration{totalTickets=1, ticketReleaseRate=1, customerRetrievalRate=1, maxTicketCapacity=1}
+2024-12-11T21:44:33.364141100: New configuration saved
+2024-12-11T21:44:33.366139800: New configuration saved
+2024-12-11T21:44:33.372200200: System started with configuration: Configuration{totalTickets=10, ticketReleaseRate=10, customerRetrievalRate=10, maxTicketCapacity=10}
+2024-12-11T21:44:36.218708100: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=10, customerRetrievalRate=10, maxTicketCapacity=10}
+2024-12-11T21:44:46.560929900: New configuration saved
+2024-12-11T21:45:36.480052900: New configuration saved
+2024-12-11T21:45:36.482071800: New configuration saved
+2024-12-11T21:45:36.486073900: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=10, customerRetrievalRate=1000, maxTicketCapacity=200}
+2024-12-11T21:45:38.898525500: Loaded configuration from file: Configuration{totalTickets=100, ticketReleaseRate=10, customerRetrievalRate=1000, maxTicketCapacity=200}
+2024-12-11T21:47:24.345039: Customer 200258 bought 10 tickets.
+2024-12-11T21:53:10.745127: New configuration saved
+2024-12-11T21:53:10.746496400: New configuration saved
+2024-12-11T21:53:10.750512600: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=200}
+2024-12-11T21:53:17.104961400: Loaded configuration from file: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=200}
+2024-12-11T21:53:43.032727800: Customer 200258 bought 20 tickets.
+2024-12-11T22:00:54.793685400: New configuration saved
+2024-12-11T22:00:54.795761500: New configuration saved
+2024-12-11T22:00:54.799871700: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=200}
+2024-12-11T22:00:58.146579800: Loaded configuration from file: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=200}
+2024-12-11T22:01:06.365137500: Customer 200258 bought 20 tickets.
+2024-12-11T22:01:38.516236500: New configuration saved
+2024-12-11T22:15:13.260784900: New configuration saved
+2024-12-11T22:15:13.262773200: New configuration saved
+2024-12-11T22:15:13.267934100: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=200}
+2024-12-11T22:15:15.805567400: Loaded configuration from file: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=200}
+2024-12-11T22:15:31.714992700: Customer 200258 bought 20 tickets.
+2024-12-11T22:15:47.919813500: New configuration saved
+2024-12-11T22:16:20.426473800: New configuration saved
+2024-12-11T22:16:20.428482300: New configuration saved
+2024-12-11T22:16:20.430476300: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=200}
+2024-12-11T22:16:24.300631100: Loaded configuration from file: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=200}
+2024-12-11T22:17:22.346141200: Customer 200258 bought 40 tickets.
+2024-12-11T22:17:33.424848600: New configuration saved
+2024-12-11T22:19:22.940302500: New configuration saved
+2024-12-11T22:19:22.941302600: New configuration saved
+2024-12-11T22:19:22.943822100: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=200}
+2024-12-11T22:19:25.353869600: Loaded configuration from file: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=200}
+2024-12-11T22:20:13.494609600: Customer 200258 bought 40 tickets.
+2024-12-11T22:21:49.096589100: New configuration saved
+2024-12-11T22:21:49.100878900: New configuration saved
+2024-12-11T22:21:49.104871800: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=200}
+2024-12-11T22:21:51.244097: Loaded configuration from file: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=200}
+2024-12-11T22:23:20.688091400: New configuration saved
+2024-12-11T22:23:39.493339100: New configuration saved
+2024-12-11T22:23:39.496338900: New configuration saved
+2024-12-11T22:23:39.502342600: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=200}
+2024-12-11T22:23:53.313709900: Loaded configuration from file: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=200}
+2024-12-11T22:27:38.462022600: New configuration saved
+2024-12-11T22:27:38.464027600: New configuration saved
+2024-12-11T22:27:38.471068400: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=200}
+2024-12-11T22:27:42.204711800: Loaded configuration from file: Configuration{totalTickets=100, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=200}
+2024-12-11T22:48:59.078000800: New configuration saved
+2024-12-11T22:48:59.079713500: New configuration saved
+2024-12-11T22:48:59.082821500: System started with configuration: Configuration{totalTickets=10, ticketReleaseRate=2, customerRetrievalRate=100, maxTicketCapacity=100}
+2024-12-11T22:49:01.460826: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=2, customerRetrievalRate=100, maxTicketCapacity=100}
+2024-12-11T22:50:00.206931800: New configuration saved
+2024-12-11T22:50:00.209459600: New configuration saved
+2024-12-11T22:50:00.213555100: System started with configuration: Configuration{totalTickets=100, ticketReleaseRate=2, customerRetrievalRate=100, maxTicketCapacity=1000}
+2024-12-11T22:50:04.600567900: Loaded configuration from file: Configuration{totalTickets=100, ticketReleaseRate=2, customerRetrievalRate=100, maxTicketCapacity=1000}
+2024-12-11T22:50:10.416044600: Customer 200258 bought 5 tickets.
+2024-12-11T22:50:57.360548: New configuration saved
+2024-12-11T22:51:13.277077400: New configuration saved
+2024-12-11T22:51:13.278038500: New configuration saved
+2024-12-11T22:51:13.282176600: System started with configuration: Configuration{totalTickets=200, ticketReleaseRate=2, customerRetrievalRate=100, maxTicketCapacity=1000}
+2024-12-11T22:51:15.572966100: Loaded configuration from file: Configuration{totalTickets=200, ticketReleaseRate=2, customerRetrievalRate=100, maxTicketCapacity=1000}
+2024-12-11T22:51:24.292752600: Customer 200258 bought 5 tickets.
+2024-12-11T22:52:30.080979700: New configuration saved
+2024-12-11T22:52:30.081977900: New configuration saved
+2024-12-11T22:52:30.083985400: System started with configuration: Configuration{totalTickets=200, ticketReleaseRate=2, customerRetrievalRate=100, maxTicketCapacity=100}
+2024-12-11T22:52:32.179415400: Loaded configuration from file: Configuration{totalTickets=200, ticketReleaseRate=2, customerRetrievalRate=100, maxTicketCapacity=100}
+2024-12-11T22:52:40.293657800: Customer 200258 bought 5 tickets.
+2024-12-11T22:57:23.813390: New configuration saved
+2024-12-11T22:57:23.814389: New configuration saved
+2024-12-11T22:57:23.816542700: System started with configuration: Configuration{totalTickets=200, ticketReleaseRate=2, customerRetrievalRate=100, maxTicketCapacity=100}
+2024-12-11T22:57:26.389375700: Loaded configuration from file: Configuration{totalTickets=200, ticketReleaseRate=2, customerRetrievalRate=100, maxTicketCapacity=100}
+2024-12-11T22:57:31.905132200: Customer 200258 bought 5 tickets.
+2024-12-11T22:59:10.368759100: New configuration saved
+2024-12-11T22:59:10.369751300: New configuration saved
+2024-12-11T22:59:10.371754: System started with configuration: Configuration{totalTickets=200, ticketReleaseRate=2, customerRetrievalRate=100, maxTicketCapacity=1000}
+2024-12-11T22:59:12.652899800: Loaded configuration from file: Configuration{totalTickets=200, ticketReleaseRate=2, customerRetrievalRate=100, maxTicketCapacity=1000}
+2024-12-11T22:59:26.827283400: Vendor 100272 added 10 tickets.
+2024-12-11T23:02:16.234680600: New configuration saved
+2024-12-11T23:02:16.235680900: New configuration saved
+2024-12-11T23:02:16.239684800: System started with configuration: Configuration{totalTickets=200, ticketReleaseRate=2, customerRetrievalRate=100, maxTicketCapacity=1000}
+2024-12-11T23:02:18.634777300: Loaded configuration from file: Configuration{totalTickets=200, ticketReleaseRate=2, customerRetrievalRate=100, maxTicketCapacity=1000}
+2024-12-11T23:02:30.317492200: Vendor 100272 added 10 tickets.
+2024-12-11T23:03:01.246408500: Customer 200258 bought 20 tickets.
+2024-12-11T23:03:07.175658900: Vendor 100272 added 20 tickets.
+2024-12-11T23:03:17.973322900: New configuration saved
+2024-12-11T23:03:42.990129200: New configuration saved
+2024-12-11T23:03:42.994124800: New configuration saved
+2024-12-11T23:03:42.999931900: System started with configuration: Configuration{totalTickets=20, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=30}
+2024-12-11T23:03:46.102870900: Loaded configuration from file: Configuration{totalTickets=20, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=30}
+2024-12-11T23:11:26.587073800: New configuration saved
+2024-12-11T23:11:26.589074500: New configuration saved
+2024-12-11T23:11:26.592076100: System started with configuration: Configuration{totalTickets=20, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=30}
+2024-12-11T23:11:31.868230100: Loaded configuration from file: Configuration{totalTickets=20, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=30}
+2024-12-11T23:12:18.871379: New configuration saved
+2024-12-11T23:12:18.871890700: New configuration saved
+2024-12-11T23:12:18.874905400: System started with configuration: Configuration{totalTickets=20, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=30}
+2024-12-11T23:12:23.531381800: Loaded configuration from file: Configuration{totalTickets=20, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=30}
+2024-12-11T23:13:28.047719200: New configuration saved
+2024-12-11T23:13:28.053712500: New configuration saved
+2024-12-11T23:13:28.064711200: System started with configuration: Configuration{totalTickets=20, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=30}
+2024-12-11T23:13:30.298342: Loaded configuration from file: Configuration{totalTickets=20, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=30}
+2024-12-11T23:13:40.097866800: Customer 200258 bought 10 tickets.
+2024-12-11T23:19:10.430130800: New configuration saved
+2024-12-11T23:19:10.431635800: New configuration saved
+2024-12-11T23:19:10.433641100: System started with configuration: Configuration{totalTickets=20, ticketReleaseRate=5, customerRetrievalRate=100, maxTicketCapacity=30}
+2024-12-12T22:30:23.931634700: New configuration saved
+2024-12-12T22:30:26.268681600: Loaded configuration from file: Configuration{totalTickets=50, ticketReleaseRate=8, customerRetrievalRate=1000, maxTicketCapacity=100}
+2024-12-12T22:30:51.652021700: Loaded configuration from file: Configuration{totalTickets=50, ticketReleaseRate=8, customerRetrievalRate=1000, maxTicketCapacity=100}
+2024-12-12T22:34:27.519760500: New configuration saved
+2024-12-12T22:38:44.345456100: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=200}
+2024-12-12T22:38:49.950596300: Vendor 100272 added 10 tickets.
+2024-12-12T22:40:45.698117700: New configuration saved
+2024-12-12T22:40:48.407802200: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=200}
+2024-12-12T22:43:02.495437700: New configuration saved
+2024-12-12T22:43:04.646009700: Loaded configuration from file: Configuration{totalTickets=200, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=300}
+2024-12-12T22:44:12.207420600: Created Customer Account: ID :- 200268 com.oop.EventTicketingSystem.model.Account@691deb45
+2024-12-12T22:44:42.082058600: Customer 200268 bought 10 tickets.
+2024-12-12T22:44:59.290458900: Created Vendor Account: ID :- 100295 com.oop.EventTicketingSystem.model.Account@3a81711c
+2024-12-12T22:45:21.064416800: Vendor 100295 added 20 tickets.
+2024-12-12T22:45:41.350669800: Customer 200268 bought 50 tickets.
+2024-12-12T22:45:57.064691100: Vendor 100295 added 100 tickets.
+2024-12-12T22:46:55.899846200: Vendor 100295 added 10 tickets.
+2024-12-12T22:47:53.767173200: Vendor 100295 added 1 tickets.
+2024-12-12T22:48:08.198038500: Created Customer Account: ID :- 200339 com.oop.EventTicketingSystem.model.Account@18cba7a8
+2024-12-12T22:50:17.686838: Customer 200339 bought 100 tickets.
+2024-12-12T22:51:12.302356300: Loaded configuration from file: Configuration{totalTickets=200, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=300}
+2024-12-12T22:51:28.756759300: Customer 200268 bought 150 tickets.
+2024-12-12T22:51:42.778439900: Loaded configuration from file: Configuration{totalTickets=200, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=300}
+2024-12-12T22:51:58.622104900: New configuration saved
+2024-12-12T22:52:08.907364300: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=50}
+2024-12-12T22:52:42.060027700: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=50}
+2024-12-12T22:54:55.135989300: Vendor 100302 added 20 tickets.
+2024-12-12T22:55:01.193496400: Customer 200268 bought 20 tickets.
+2024-12-12T22:55:28.440015: Vendor 100302 added 30 tickets.
+2024-12-12T22:55:50.739924: Customer 200268 bought 30 tickets.
+2024-12-12T22:56:00.660060300: Vendor 100302 added 10 tickets.
+2024-12-12T22:57:09.738822100: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=50}
+2024-12-12T22:57:24.145123: New configuration saved
+2024-12-12T22:57:27.054773800: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=50, customerRetrievalRate=1000, maxTicketCapacity=50}
+2024-12-12T22:57:48.672730600: New configuration saved
+2024-12-12T22:57:50.697465700: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=50}
+2024-12-12T22:58:52.742927600: New configuration saved
+2024-12-12T22:58:56.293353100: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=30}
+2024-12-12T23:00:27.902269400: New configuration saved
+2024-12-12T23:00:30.252904800: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=20}
+2024-12-12T23:00:56.798839400: Vendor 100295 added 10 tickets.
+2024-12-12T23:01:57.655105600: Customer 200268 bought 20 tickets.
+2024-12-12T23:03:15.593375200: New configuration saved
+2024-12-12T23:03:17.750105: Loaded configuration from file: Configuration{totalTickets=50, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=100}
+2024-12-12T23:05:35.053537500: Vendor 100302 added 10 tickets.
+2024-12-12T23:05:35.224443700: Vendor 100295 added 30 tickets.
+2024-12-12T23:05:41.175501300: Customer 200253 bought 10 tickets.
+2024-12-12T23:06:07.720536600: Customer 200339 bought 40 tickets.
+2024-12-12T23:06:32.225425300: Vendor 100302 added 10 tickets.
+2024-12-12T23:06:48.431888500: Customer 200253 bought 20 tickets.
+2024-12-12T23:06:56.881981300: Customer 200339 bought 30 tickets.
+2024-12-12T23:07:56.346606800: Vendor 100302 added 0 tickets.
+2024-12-12T23:08:39.330734200: Customer 200258 bought 0 tickets.
+2024-12-13T23:20:54.442517800: New configuration saved
+2024-12-13T23:21:01.713821300: Loaded configuration from file: Configuration{totalTickets=1, ticketReleaseRate=6, customerRetrievalRate=1000, maxTicketCapacity=100}
+2024-12-13T23:21:56.262626100: Created Vendor Account: ID :- 100253 com.oop.EventTicketingSystem.model.Account@3804bbfc
+2024-12-13T23:22:40.143848800: Vendor 100253 added 10 tickets.
+2024-12-13T23:23:15.074970900: Created Customer Account: ID :- 200333 com.oop.EventTicketingSystem.model.Account@44c6b560
+2024-12-13T23:23:56.546060500: Customer 200333 bought 5 tickets.
+2024-12-14T16:09:04.641112600: New configuration saved
+2024-12-14T16:09:18.418841: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=200}
+2024-12-14T16:10:25.764798900: Created Vendor Account: ID :- 100347 com.oop.EventTicketingSystem.model.Account@48d373ce
+2024-12-14T16:10:50.582771100: Vendor 100347 added 2 tickets.
+2024-12-14T16:11:13.842387400: Created Customer Account: ID :- 200288 com.oop.EventTicketingSystem.model.Account@38e70a98
+2024-12-14T16:11:51.852553900: Customer 200288 bought 11 tickets.
+2024-12-14T16:13:08.966507300: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=200}
+2024-12-19T10:49:29.104570800: New configuration saved
+2024-12-19T10:49:35.335032800: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=5, maxTicketCapacity=1000000000}
+2024-12-19T10:50:13.441397300: Created Customer Account: ID :- 200322 com.oop.EventTicketingSystem.model.Account@5f2a6ca
+2024-12-19T10:50:33.669361200: Customer 200322 bought 5 tickets.
+2024-12-19T10:50:48.792161900: Customer 200322 bought 5 tickets.
+2024-12-19T10:51:21.438480100: Created Vendor Account: ID :- 100323 com.oop.EventTicketingSystem.model.Account@1d223cf9
+2024-12-23T15:47:40.678345200: New configuration saved
+2024-12-23T15:47:42.638778700: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=100}
+2025-01-13T21:16:42.751647400: New configuration saved
+2025-01-13T21:16:55.092678200: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=50}
+2025-01-13T21:17:44.238516900: Vendor 100302 added 20 tickets.
+2025-01-13T21:18:39.741996: Vendor 100323 added 20 tickets.
+2025-01-13T21:19:12.389940600: Customer 200268 bought 5 tickets.
+2025-01-13T21:19:31.132375: Vendor 100302 added 0 tickets.
+2025-01-15T14:10:28.516426: New configuration saved
+2025-01-15T14:10:36.346583100: Loaded configuration from file: Configuration{totalTickets=1, ticketReleaseRate=1, customerRetrievalRate=1, maxTicketCapacity=10}
+2025-01-15T14:11:39.926106900: Created Customer Account: ID :- 200338 com.oop.EventTicketingSystem.model.Account@554d19e4
+2025-01-15T14:12:52.210358100: Created Vendor Account: ID :- 100285 com.oop.EventTicketingSystem.model.Account@13eaf8d
+2025-01-15T14:13:43.118753400: Customer 200338 bought 5 tickets.
+2025-01-15T14:13:49.160604100: Vendor 100285 added 9 tickets.
+2025-01-15T22:56:23.663729800: New configuration saved
+2025-01-15T22:56:25.959497900: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=100}
+2025-01-15T22:56:49.568755900: Created Vendor Account: ID :- 100266 com.oop.EventTicketingSystem.model.Account@3b4227ad
+2025-01-15T22:57:25.134409100: Vendor 100266 added 20 tickets.
+2025-01-15T22:59:19.421927400: Created Customer Account: ID :- 200294 com.oop.EventTicketingSystem.model.Account@1b3097f4
+2025-01-15T22:59:44.600072300: Customer 200294 bought 10 tickets.
+2025-01-15T22:59:47.229624300: Vendor 100266 added 10 tickets.
+2025-01-15T23:00:05.945856900: Vendor 100266 added 10 tickets.
+2025-01-15T23:00:19.895162900: Customer 200294 bought 20 tickets.
+2025-01-15T23:00:21.089761200: Vendor 100266 added 5 tickets.
+2025-01-15T23:00:42.691026300: Vendor 100266 added 45 tickets.
+2025-01-15T23:01:00.999112200: Customer 200294 bought 30 tickets.
+2025-01-15T23:01:12.989902700: Vendor 100266 added 0 tickets.
+2025-01-15T23:02:16.250377: Customer undefined bought 20 tickets.
+2025-01-15T23:02:20.435320100: Customer 200294 bought 20 tickets.
+2025-01-15T23:03:52.978533500: Loaded configuration from file: Configuration{totalTickets=10, ticketReleaseRate=5, customerRetrievalRate=1000, maxTicketCapacity=100}
+2025-12-04T11:15:53.900303100: New configuration saved
+2025-12-04T11:15:58.421547600: Loaded configuration from file: Configuration{totalTickets=100, ticketReleaseRate=15, customerRetrievalRate=10, maxTicketCapacity=500}
+2025-12-04T11:16:20.034750100: Created Customer Account: ID :- 200348 com.oop.EventTicketingSystem.model.Account@2c568f3b
+2025-12-04T11:16:37.482032300: Customer 200348 bought 10 tickets.
+2025-12-04T11:17:15.481373300: Created Vendor Account: ID :- 100269 com.oop.EventTicketingSystem.model.Account@7f44c962
+2025-12-04T11:17:46.578245200: Vendor 100269 added 100 tickets.
