@@ -37,7 +37,7 @@ public class TicketPool {
             }
 
             for (int i = 0; i < ticketsToAdd; i++) {
-                com.oop.EventTicketingSystem.model.Ticket ticket = new com.oop.EventTicketingSystem.model.Ticket("Ticket No: " + (totalTickets + 1), "AVAILABLE");
+                com.oop.EventTicketingSystem.model.Ticket ticket = new com.oop.EventTicketingSystem.model.Ticket("Ticket No: " + (totalTickets + 1), com.oop.EventTicketingSystem.model.Ticket.TicketStatus.VALID);
                 ticketRepository.save(ticket);
                 totalTickets++;
                 ticketsAdded++;
@@ -55,7 +55,7 @@ public class TicketPool {
 
                 // Add allowed tickets
                 for (int j = 0; j < allowedTickets; j++) {
-                    com.oop.EventTicketingSystem.model.Ticket ticket = new com.oop.EventTicketingSystem.model.Ticket("Ticket No: " + (totalTickets + 1), "AVAILABLE");
+                    com.oop.EventTicketingSystem.model.Ticket ticket = new com.oop.EventTicketingSystem.model.Ticket("Ticket No: " + (totalTickets + 1), com.oop.EventTicketingSystem.model.Ticket.TicketStatus.VALID);
                     ticketRepository.save(ticket);
                     totalTickets++;
                     ticketsAdded = (int) ticketRepository.count(); // Sync with DB
@@ -74,8 +74,8 @@ public class TicketPool {
             }
 
             // Normal ticket addition
-            for (int j = 0; j < count; j++) {
-                com.oop.EventTicketingSystem.model.Ticket ticket = new com.oop.EventTicketingSystem.model.Ticket("Ticket No: " + (totalTickets + 1), "AVAILABLE");
+            for (int i = 0; i < count; i++) {
+                com.oop.EventTicketingSystem.model.Ticket ticket = new com.oop.EventTicketingSystem.model.Ticket("Ticket No: " + (totalTickets + 1), com.oop.EventTicketingSystem.model.Ticket.TicketStatus.VALID);
                 ticketRepository.save(ticket);
                 totalTickets++;
                 ticketsAdded++;

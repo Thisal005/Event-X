@@ -3,6 +3,8 @@ package com.oop.EventTicketingSystem.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "ticket_types")
@@ -28,6 +30,10 @@ public class TicketType {
     @JoinColumn(name = "event_id", nullable = false)
     @JsonIgnore
     private Event event;
+
+    @OneToMany(mappedBy = "ticketType", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<PriceRule> priceRules = new ArrayList<>();
 
     public TicketType() {
     }
@@ -87,5 +93,13 @@ public class TicketType {
 
     public void setEvent(Event event) {
         this.event = event;
+    }
+
+    public List<PriceRule> getPriceRules() {
+        return priceRules;
+    }
+
+    public void setPriceRules(List<PriceRule> priceRules) {
+        this.priceRules = priceRules;
     }
 }
