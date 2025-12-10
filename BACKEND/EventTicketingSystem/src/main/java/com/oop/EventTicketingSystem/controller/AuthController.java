@@ -1,11 +1,7 @@
 package com.oop.EventTicketingSystem.controller;
 
-import com.oop.EventTicketingSystem.model.Provider;
-import com.oop.EventTicketingSystem.model.Role;
-import com.oop.EventTicketingSystem.model.User;
-import com.oop.EventTicketingSystem.repository.UserRepository;
-import com.oop.EventTicketingSystem.security.JwtUtils;
-import com.oop.EventTicketingSystem.security.UserPrincipal;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,9 +10,19 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
+import com.oop.EventTicketingSystem.model.Provider;
+import com.oop.EventTicketingSystem.model.Role;
+import com.oop.EventTicketingSystem.model.User;
+import com.oop.EventTicketingSystem.repository.UserRepository;
+import com.oop.EventTicketingSystem.security.JwtUtils;
+import com.oop.EventTicketingSystem.security.UserPrincipal;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -38,14 +44,28 @@ public class AuthController {
     // Login for local users (optional, if you want both Google and Form login)
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody Map<String, String> loginRequest) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.get("email"), loginRequest.get("password")));
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginRequest.get("email"), loginRequest.get("password")));
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtUtils.generateJwtToken(authentication);
-        UserPrincipal userDetails = (UserPrincipal) authentication.getPrincipal();
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            String jwt = jwtUtils.generateJwtToken(authentication);
+            UserPrincipal userDetails = (UserPrincipal) authentication.getPrincipal();
+            
+            // Fetch user to get role
+            User user = userRepository.findById(userDetails.getId())
+                    .orElseThrow(() -> new RuntimeException("User not found"));
 
-        return ResponseEntity.ok(Map.of("token", jwt, "id", userDetails.getName(), "email", userDetails.getEmail()));
+            return ResponseEntity.ok(Map.of(
+                    "token", jwt, 
+                    "id", userDetails.getId(), 
+                    "email", userDetails.getEmail(),
+                    "name", user.getName() != null ? user.getName() : "",
+                    "role", user.getRole().name()
+            ));
+        } catch (org.springframework.security.core.AuthenticationException e) {
+            return ResponseEntity.status(401).body(Map.of("error", "Invalid email or password"));
+        }
     }
 
     @PostMapping("/signup")
@@ -70,11 +90,14 @@ public class AuthController {
     @GetMapping("/me")
     public ResponseEntity<?> getCurrentUser(@AuthenticationPrincipal UserPrincipal userPrincipal) {
         if (userPrincipal == null) {
-             return ResponseEntity.status(401).build();
+            return ResponseEntity.status(401).body(Map.of("error", "Not authenticated"));
         }
-        User user = userRepository.findById(Long.parseLong(userPrincipal.getName()))
-                .orElseThrow(() -> new RuntimeException("User not found"));
-                
-        return ResponseEntity.ok(user);
+        try {
+            User user = userRepository.findById(userPrincipal.getId())
+                    .orElseThrow(() -> new RuntimeException("User not found"));
+            return ResponseEntity.ok(user);
+        } catch (Exception e) {
+            return ResponseEntity.status(401).body(Map.of("error", "Authentication failed: " + e.getMessage()));
+        }
     }
 }
