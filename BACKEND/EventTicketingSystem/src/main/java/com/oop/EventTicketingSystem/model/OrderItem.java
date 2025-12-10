@@ -1,7 +1,17 @@
 package com.oop.EventTicketingSystem.model;
 
-import jakarta.persistence.*;
 import java.math.BigDecimal;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "order_items")
@@ -13,10 +23,12 @@ public class OrderItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", nullable = false)
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties({"orderItems", "customer", "hibernateLazyInitializer", "handler"})
     private Order order;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ticket_type_id", nullable = false)
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties({"event", "priceRules", "hibernateLazyInitializer", "handler"})
     private TicketType ticketType;
 
     @Column(nullable = false)
@@ -24,6 +36,10 @@ public class OrderItem {
 
     @Column(nullable = false)
     private BigDecimal price; // Price at time of purchase
+
+    @OneToMany(mappedBy = "orderItem", fetch = FetchType.LAZY)
+    @com.fasterxml.jackson.annotation.JsonIgnore
+    private java.util.List<Ticket> tickets;
 
     public OrderItem() {
     }
@@ -75,5 +91,13 @@ public class OrderItem {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public java.util.List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(java.util.List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }
