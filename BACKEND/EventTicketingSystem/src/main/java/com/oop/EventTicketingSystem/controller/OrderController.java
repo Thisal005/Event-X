@@ -77,4 +77,43 @@ public class OrderController {
     public List<com.oop.EventTicketingSystem.payload.response.OrderResponse> getAllOrders() {
         return orderService.getAllOrders();
     }
+    @Autowired
+    private com.oop.EventTicketingSystem.service.EmailService emailService;
+
+    @Autowired
+    private com.oop.EventTicketingSystem.repository.OrderRepository orderRepository;
+
+    @PostMapping("/email-tickets")
+    @PreAuthorize("hasRole('CUSTOMER') or hasRole('ADMIN')")
+    public ResponseEntity<?> sendTicketEmail(@RequestParam("files") org.springframework.web.multipart.MultipartFile[] files,
+                                           @RequestParam("ticketIds") Long[] ticketIds,
+                                           @RequestParam("orderId") Long orderId,
+                                           @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        try {
+            Order order = orderRepository.findById(orderId).orElseThrow(() -> new RuntimeException("Order not found"));
+            
+            // Check ownership
+            if (!order.getCustomer().getId().equals(userPrincipal.getId()) && 
+                !userPrincipal.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+                return ResponseEntity.status(403).body("Unauthorized to access this order");
+            }
+
+            java.util.Map<Long, byte[]> ticketImages = new java.util.HashMap<>();
+            // Match files to ticketIds (assuming order is preserved in frontend FormData append order)
+            if (files.length == ticketIds.length) {
+                for (int i = 0; i < files.length; i++) {
+                     ticketImages.put(ticketIds[i], files[i].getBytes());
+                }
+            } else {
+                 return ResponseEntity.badRequest().body("Mismatch between files and ticket IDs");
+            }
+            
+            emailService.sendOrderConfirmationEmail(userPrincipal.getEmail(), "Order Confirmation - ID: " + orderId, order, ticketImages);
+            
+            return ResponseEntity.ok("Order confirmation email sent successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Failed to send email: " + e.getMessage());
+        }
+    }
 }
