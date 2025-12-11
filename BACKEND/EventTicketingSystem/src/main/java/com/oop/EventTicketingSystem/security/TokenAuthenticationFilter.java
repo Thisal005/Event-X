@@ -1,12 +1,16 @@
 package com.oop.EventTicketingSystem.security;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -43,21 +47,46 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
                 
                 if (jwtUtils.validateJwtToken(jwt)) {
                     String email = jwtUtils.getUserNameFromJwtToken(jwt);
-                    log.debug("JWT valid, extracting user: {}", email);
-
-                    UserDetails userDetails = customUserDetailsService.loadUserByUsername(email);
-                    log.info("Authenticated user: {} with roles: {} for {} {}", 
-                            userDetails.getUsername(), 
-                            userDetails.getAuthorities(),
-                            method, 
-                            path);
+                    String roles = jwtUtils.getRolesFromJwtToken(jwt);
                     
-                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                            userDetails, null, userDetails.getAuthorities());
-                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    log.debug("JWT valid, extracting user: {} with roles: {}", email, roles);
 
-                    SecurityContextHolder.getContext().setAuthentication(authentication);
-                    log.debug("Security context set for user: {}", email);
+                    // Check if this is a Gatekeeper token
+                    if (roles != null && roles.contains("GATEKEEPER")) {
+                        Long gatekeeperEventId = jwtUtils.getGatekeeperEventIdFromToken(jwt);
+                        log.info("Gatekeeper token detected for event {} by {}", gatekeeperEventId, email);
+                        
+                        // Create a simple UserDetails for the gatekeeper (no DB lookup)
+                        List<SimpleGrantedAuthority> authorities = Collections.singletonList(
+                                new SimpleGrantedAuthority("GATEKEEPER")
+                        );
+                        UserDetails gatekeeperUser = new User(email, "", authorities);
+                        
+                        UsernamePasswordAuthenticationToken authentication = 
+                                new UsernamePasswordAuthenticationToken(gatekeeperUser, gatekeeperEventId, authorities);
+                        authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                        
+                        // Store eventId in request attribute for easy access
+                        request.setAttribute("gatekeeperEventId", gatekeeperEventId);
+                        
+                        SecurityContextHolder.getContext().setAuthentication(authentication);
+                        log.debug("Security context set for gatekeeper: {} (event: {})", email, gatekeeperEventId);
+                    } else {
+                        // Regular user authentication
+                        UserDetails userDetails = customUserDetailsService.loadUserByUsername(email);
+                        log.info("Authenticated user: {} with roles: {} for {} {}", 
+                                userDetails.getUsername(), 
+                                userDetails.getAuthorities(),
+                                method, 
+                                path);
+                        
+                        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                                userDetails, null, userDetails.getAuthorities());
+                        authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
+                        SecurityContextHolder.getContext().setAuthentication(authentication);
+                        log.debug("Security context set for user: {}", email);
+                    }
                 } else {
                     log.warn("Invalid JWT token for request: {} {}", method, path);
                 }
