@@ -38,7 +38,7 @@ public class Ticket {
     private OrderItem orderItem;
 
     public enum TicketStatus {
-        VALID, USED
+        VALID, USED, REFUNDED, CANCELLED
     }
 
     public Ticket() {

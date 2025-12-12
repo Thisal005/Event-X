@@ -30,6 +30,10 @@ public class User {
 
     private String providerId;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "custom_role_id")
+    private CustomRole customRole;
+
     public User() {
     }
 
@@ -96,5 +100,13 @@ public class User {
 
     public void setProviderId(String providerId) {
         this.providerId = providerId;
+    }
+
+    public CustomRole getCustomRole() {
+        return customRole;
+    }
+
+    public void setCustomRole(CustomRole customRole) {
+        this.customRole = customRole;
     }
 }
