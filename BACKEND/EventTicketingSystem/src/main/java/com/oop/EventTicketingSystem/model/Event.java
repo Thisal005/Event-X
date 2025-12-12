@@ -42,11 +42,25 @@ public class Event {
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TicketType> ticketTypes = new ArrayList<>();
 
+    @OneToOne(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("event")
+    private EventCommunication communication;
+
     public enum EventStatus {
         DRAFT,
         PUBLISHED,
-        CANCELLED
+        CANCELLED,
+        POSTPONED
     }
+
+    public enum ApprovalStatus {
+        PENDING,
+        APPROVED,
+        REJECTED
+    }
+
+    @Enumerated(EnumType.STRING)
+    private ApprovalStatus approvalStatus = ApprovalStatus.PENDING;
 
     public Event() {
     }
@@ -140,5 +154,21 @@ public class Event {
 
     public void setTicketTypes(List<TicketType> ticketTypes) {
         this.ticketTypes = ticketTypes;
+    }
+
+    public EventCommunication getCommunication() {
+        return communication;
+    }
+
+    public void setCommunication(EventCommunication communication) {
+        this.communication = communication;
+    }
+
+    public ApprovalStatus getApprovalStatus() {
+        return approvalStatus;
+    }
+
+    public void setApprovalStatus(ApprovalStatus approvalStatus) {
+        this.approvalStatus = approvalStatus;
     }
 }
