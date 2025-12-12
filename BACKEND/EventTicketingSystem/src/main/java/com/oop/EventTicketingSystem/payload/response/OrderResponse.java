@@ -8,12 +8,14 @@ public class OrderResponse {
     private Long orderId;
     private LocalDateTime orderDate;
     private BigDecimal totalAmount;
+    private String status;
     private List<OrderItemDto> orderItems;
 
-    public OrderResponse(Long orderId, LocalDateTime orderDate, BigDecimal totalAmount, List<OrderItemDto> orderItems) {
+    public OrderResponse(Long orderId, LocalDateTime orderDate, BigDecimal totalAmount, String status, List<OrderItemDto> orderItems) {
         this.orderId = orderId;
         this.orderDate = orderDate;
         this.totalAmount = totalAmount;
+        this.status = status;
         this.orderItems = orderItems;
     }
 
@@ -39,6 +41,14 @@ public class OrderResponse {
 
     public void setTotalAmount(BigDecimal totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public List<OrderItemDto> getOrderItems() {
