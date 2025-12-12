@@ -23,12 +23,42 @@ public class AdminController {
         return userRepository.findAll();
     }
 
+    @Autowired
+    private com.oop.EventTicketingSystem.repository.CustomRoleRepository customRoleRepository;
+
     @DeleteMapping("/users/{id}")
+    @PreAuthorize("hasRole('ADMIN') or hasAuthority('DELETE_USER')")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         if (!userRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
         userRepository.deleteById(id);
         return ResponseEntity.ok("User deleted successfully");
+    }
+
+    @PutMapping("/users/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody java.util.Map<String, Object> payload) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (payload.containsKey("role")) {
+            user.setRole(com.oop.EventTicketingSystem.model.Role.valueOf((String) payload.get("role")));
+        }
+
+        if (payload.containsKey("customRoleId")) {
+            Object roleIdObj = payload.get("customRoleId");
+            if (roleIdObj != null && !roleIdObj.toString().isEmpty()) {
+                Long roleId = Long.valueOf(roleIdObj.toString());
+                com.oop.EventTicketingSystem.model.CustomRole customRole = customRoleRepository.findById(roleId)
+                        .orElseThrow(() -> new RuntimeException("Custom Role not found"));
+                user.setCustomRole(customRole);
+            } else {
+                user.setCustomRole(null);
+            }
+        }
+
+        userRepository.save(user);
+        return ResponseEntity.ok(user);
     }
 }

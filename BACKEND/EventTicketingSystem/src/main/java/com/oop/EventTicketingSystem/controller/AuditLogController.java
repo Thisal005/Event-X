@@ -1,0 +1,35 @@
+package com.oop.EventTicketingSystem.controller;
+
+import com.oop.EventTicketingSystem.model.AuditLog;
+import com.oop.EventTicketingSystem.service.AuditLogService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/admin/audit-logs")
+@CrossOrigin(origins = "http://localhost:5173")
+@PreAuthorize("hasRole('ADMIN')")
+public class AuditLogController {
+
+    @Autowired
+    private AuditLogService auditLogService;
+
+    @GetMapping
+    public ResponseEntity<List<AuditLog>> getAllLogs() {
+        // Reverse order to show newest first
+        List<AuditLog> logs = auditLogService.getAllLogs();
+        logs.sort((a, b) -> b.getTimestamp().compareTo(a.getTimestamp()));
+        return ResponseEntity.ok(logs);
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<AuditLog>> getLogsByUser(@PathVariable Long userId) {
+        List<AuditLog> logs = auditLogService.getLogsByUserId(userId);
+        logs.sort((a, b) -> b.getTimestamp().compareTo(a.getTimestamp()));
+        return ResponseEntity.ok(logs);
+    }
+}
