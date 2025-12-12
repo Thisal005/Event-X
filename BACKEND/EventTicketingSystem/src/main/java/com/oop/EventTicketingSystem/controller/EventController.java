@@ -80,6 +80,24 @@ public class EventController {
         return ResponseEntity.ok(eventService.publishEvent(id));
     }
 
+    @PutMapping("/{id}/approve")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Event> approveEvent(@PathVariable Long id) {
+        return ResponseEntity.ok(eventService.approveEvent(id));
+    }
+
+    @PutMapping("/{id}/reject")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Event> rejectEvent(@PathVariable Long id) {
+        return ResponseEntity.ok(eventService.rejectEvent(id));
+    }
+
+    @GetMapping("/admin/all")
+    @PreAuthorize("hasRole('ADMIN')")
+    public List<Event> getAllEventsForAdmin() {
+        return eventService.getAllEventsForAdmin();
+    }
+
     @PutMapping(value = "/{id}", consumes = org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasRole('ORGANIZER') or hasRole('ADMIN')")
     public ResponseEntity<Event> updateEvent(@PathVariable Long id, 
@@ -108,4 +126,72 @@ public class EventController {
     public ResponseEntity<?> getEventStats(@PathVariable Long id) {
         return ResponseEntity.ok(eventService.getEventStats(id));
     }
+
+    @Autowired
+    private com.oop.EventTicketingSystem.service.RefundService refundService;
+
+    /**
+     * Cancel an event and automatically refund all ticket holders.
+     * This is the bulletproof refund endpoint - once called, every buyer gets refunded instantly.
+     */
+    @PostMapping("/{id}/cancel")
+    @PreAuthorize("hasRole('ORGANIZER') or hasRole('ADMIN')")
+    public ResponseEntity<?> cancelEvent(@PathVariable Long id,
+                                         @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        Long organizerId = Long.parseLong(userPrincipal.getName());
+        
+        com.oop.EventTicketingSystem.service.RefundService.RefundSummary summary = 
+            refundService.processEventCancellation(id, organizerId);
+        
+        return ResponseEntity.ok(java.util.Map.of(
+            "success", true,
+            "message", summary.getMessage(),
+            "ordersRefunded", summary.getOrdersRefunded(),
+            "ticketsRefunded", summary.getTicketsRefunded(),
+            "amountRefunded", summary.getAmountRefunded()
+        ));
+    }
+
+    /**
+     * Postpone an event with options:
+     * - refundAll=true: Refund all tickets
+     * - refundAll=false: Keep tickets valid for new date
+     */
+    @PostMapping("/{id}/postpone")
+    @PreAuthorize("hasRole('ORGANIZER') or hasRole('ADMIN')")
+    public ResponseEntity<?> postponeEvent(@PathVariable Long id,
+                                           @org.springframework.web.bind.annotation.RequestBody PostponeRequest request,
+                                           @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        Long organizerId = Long.parseLong(userPrincipal.getName());
+        
+        java.time.LocalDateTime newDate = null;
+        if (request.getNewDate() != null && !request.getNewDate().isEmpty()) {
+            newDate = java.time.LocalDateTime.parse(request.getNewDate());
+        }
+        
+        com.oop.EventTicketingSystem.service.RefundService.RefundSummary summary = 
+            refundService.processEventPostponement(id, organizerId, newDate, request.isRefundAll());
+        
+        return ResponseEntity.ok(java.util.Map.of(
+            "success", true,
+            "message", summary.getMessage(),
+            "ordersRefunded", summary.getOrdersRefunded(),
+            "ticketsRefunded", summary.getTicketsRefunded(),
+            "amountRefunded", summary.getAmountRefunded()
+        ));
+    }
+
+    /**
+     * Request DTO for postponing an event.
+     */
+    public static class PostponeRequest {
+        private String newDate;
+        private boolean refundAll;
+
+        public String getNewDate() { return newDate; }
+        public void setNewDate(String newDate) { this.newDate = newDate; }
+        public boolean isRefundAll() { return refundAll; }
+        public void setRefundAll(boolean refundAll) { this.refundAll = refundAll; }
+    }
 }
+
