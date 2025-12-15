@@ -25,6 +25,31 @@ public class EventService {
     @Autowired
     private WaitlistService waitlistService;
 
+    // @Autowired
+    // private com.oop.EventTicketingSystem.repository.EventCommunicationRepository eventCommunicationRepository;
+
+    private void updateEventCommunication(Event event, EventRequest.EventCommunicationRequest config) {
+        if (config == null) return;
+        
+        com.oop.EventTicketingSystem.model.EventCommunication comm = event.getCommunication();
+        if (comm == null) {
+            comm = new com.oop.EventTicketingSystem.model.EventCommunication(event);
+            event.setCommunication(comm);
+        }
+
+        comm.setReminder7dEnabled(config.isReminder7dEnabled());
+        comm.setReminder7dSubject(config.getReminder7dSubject());
+        comm.setReminder7dBody(config.getReminder7dBody());
+
+        comm.setReminder48hEnabled(config.isReminder48hEnabled());
+        comm.setReminder48hSubject(config.getReminder48hSubject());
+        comm.setReminder48hBody(config.getReminder48hBody());
+
+        comm.setReminder2hEnabled(config.isReminder2hEnabled());
+        comm.setReminder2hSubject(config.getReminder2hSubject());
+        comm.setReminder2hBody(config.getReminder2hBody());
+    }
+
     @Transactional
     public Event createEvent(EventRequest request, Long organizerId) {
         User organizer = userRepository.findById(organizerId)
@@ -39,7 +64,8 @@ public class EventService {
                 organizer
         );
         event.setBannerImage(request.getBannerImage());
-        event.setStatus(Event.EventStatus.PUBLISHED); // Auto-publish for testing
+        event.setStatus(Event.EventStatus.DRAFT); // New events start as DRAFT
+        event.setApprovalStatus(Event.ApprovalStatus.PENDING); // Requires admin approval
 
         List<TicketType> ticketTypes = new ArrayList<>();
         for (EventRequest.TicketTypeRequest tReq : request.getTicketTypes()) {
@@ -48,11 +74,22 @@ public class EventService {
         }
         event.setTicketTypes(ticketTypes);
 
+        updateEventCommunication(event, request.getCommunication());
+
         return eventRepository.save(event);
     }
 
     public List<Event> getAllEvents() {
-        return eventRepository.findByStatus(Event.EventStatus.PUBLISHED);
+        // Only return events that are both PUBLISHED and APPROVED
+        return eventRepository.findByStatusAndApprovalStatus(
+            Event.EventStatus.PUBLISHED, 
+            Event.ApprovalStatus.APPROVED
+        );
+    }
+
+    public List<Event> getAllEventsForAdmin() {
+        // Admin can see all events regardless of status
+        return eventRepository.findAll();
     }
 
     public List<Event> getOrganizerEvents(Long organizerId) {
@@ -66,9 +103,27 @@ public class EventService {
         return eventRepository.findById(id).orElseThrow(() -> new RuntimeException("Event not found"));
     }
     
-    // Admin method to approve event (simulated by setting status to PUBLISHED)
+    // Admin method to approve event
+    public Event approveEvent(Long eventId) {
+        Event event = getEventById(eventId);
+        event.setApprovalStatus(Event.ApprovalStatus.APPROVED);
+        event.setStatus(Event.EventStatus.PUBLISHED); // Auto-publish on approval
+        return eventRepository.save(event);
+    }
+
+    // Admin method to reject event
+    public Event rejectEvent(Long eventId) {
+        Event event = getEventById(eventId);
+        event.setApprovalStatus(Event.ApprovalStatus.REJECTED);
+        return eventRepository.save(event);
+    }
+
+    // Legacy publish method - now requires approval first
     public Event publishEvent(Long eventId) {
         Event event = getEventById(eventId);
+        if (event.getApprovalStatus() != Event.ApprovalStatus.APPROVED) {
+            throw new RuntimeException("Event must be approved by admin before publishing");
+        }
         event.setStatus(Event.EventStatus.PUBLISHED);
         return eventRepository.save(event);
     }
@@ -127,6 +182,8 @@ public class EventService {
         // Remove logic is risky without IDs, skipping for this iteration unless asked.
         event.setTicketTypes(currentTypes);
 
+        updateEventCommunication(event, request.getCommunication());
+
         return eventRepository.save(event);
     }
 
@@ -174,13 +231,23 @@ public class EventService {
             .map(tt -> new com.oop.EventTicketingSystem.payload.response.EventStatsResponse.TicketTypeStat(tt.getName(), tt.getSold(), tt.getQuantity()))
             .collect(java.util.stream.Collectors.toList());
 
+        // Calculate new stats: attendance, refunds, cancellations
+        long attendanceCount = ticketRepository.countByOrderItem_TicketType_Event_IdAndCheckInTimeIsNotNull(id);
+        long refundedCount = ticketRepository.countByOrderItem_TicketType_Event_IdAndStatus(id, com.oop.EventTicketingSystem.model.Ticket.TicketStatus.REFUNDED);
+        long cancelledCount = ticketRepository.countByOrderItem_TicketType_Event_IdAndStatus(id, com.oop.EventTicketingSystem.model.Ticket.TicketStatus.CANCELLED);
+        long totalOrders = orderRepository.countOrdersByEventId(id);
+
         return new com.oop.EventTicketingSystem.payload.response.EventStatsResponse(
             totalRevenue, 
             totalTicketsSold, 
             totalTickets, 
             dailySales, 
             ticketStats, 
-            hourlySales
+            hourlySales,
+            attendanceCount,
+            refundedCount,
+            cancelledCount,
+            totalOrders
         );
     }
     @Autowired
