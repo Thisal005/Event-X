@@ -96,6 +96,13 @@ public class SecurityConfig {
                 .requestMatchers(new org.springframework.security.web.util.matcher.RegexRequestMatcher("/api/events/\\d+$", "GET")).permitAll()
                 // Public price rules endpoint for urgency display
                 .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/price-rules/urgency/**").permitAll()
+                // Public live event endpoints for attendees
+                // Public live event endpoints for attendees - REMOVED permitAll, now requires authentication (except status)
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/events/*/live/status").permitAll()
+                // Live endpoints requiring authentication
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/events/*/live").authenticated()
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/events/*/live/hype").authenticated()
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/events/*/live/photos/approved").authenticated()
                 // Static resources
                 .requestMatchers("/uploads/**").permitAll()
                 // Everything else requires authentication

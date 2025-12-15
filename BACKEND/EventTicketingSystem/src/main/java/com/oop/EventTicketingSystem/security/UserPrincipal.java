@@ -10,7 +10,6 @@ import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -32,9 +31,14 @@ public class UserPrincipal implements UserDetails, OAuth2User, OidcUser {
     }
 
     public static UserPrincipal create(User user) {
-        List<GrantedAuthority> authorities = Collections.singletonList(
-                new SimpleGrantedAuthority("ROLE_" + user.getRole().name())
-        );
+        List<GrantedAuthority> authorities = new java.util.ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
+        
+        if (user.getCustomRole() != null) {
+            for (String permission : user.getCustomRole().getPermissions()) {
+                authorities.add(new SimpleGrantedAuthority(permission));
+            }
+        }
 
         return new UserPrincipal(
                 user.getId(),
