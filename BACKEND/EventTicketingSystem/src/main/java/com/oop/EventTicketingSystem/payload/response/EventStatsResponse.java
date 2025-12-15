@@ -2,7 +2,6 @@ package com.oop.EventTicketingSystem.payload.response;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
 
 public class EventStatsResponse {
     private BigDecimal totalRevenue;
@@ -11,6 +10,13 @@ public class EventStatsResponse {
     private List<DailySales> dailySales;
     private List<TicketTypeStat> ticketTypeStats;
     private List<HourlySales> salesByHourOfDay;
+    
+    // New fields for detailed stats
+    private long attendanceCount;      // Tickets checked in
+    private long refundedCount;        // Tickets refunded
+    private long cancelledCount;       // Tickets cancelled
+    private long totalOrders;          // Total number of orders
+    private double attendanceRate;     // Percentage of sold tickets that checked in
 
     public EventStatsResponse(BigDecimal totalRevenue, int totalTicketsSold, int totalTickets, 
                             List<DailySales> dailySales, List<TicketTypeStat> ticketTypeStats,
@@ -21,6 +27,24 @@ public class EventStatsResponse {
         this.dailySales = dailySales;
         this.ticketTypeStats = ticketTypeStats;
         this.salesByHourOfDay = salesByHourOfDay;
+    }
+    
+    // Extended constructor with all stats
+    public EventStatsResponse(BigDecimal totalRevenue, int totalTicketsSold, int totalTickets, 
+                            List<DailySales> dailySales, List<TicketTypeStat> ticketTypeStats,
+                            List<HourlySales> salesByHourOfDay, long attendanceCount,
+                            long refundedCount, long cancelledCount, long totalOrders) {
+        this.totalRevenue = totalRevenue;
+        this.totalTicketsSold = totalTicketsSold;
+        this.totalTickets = totalTickets;
+        this.dailySales = dailySales;
+        this.ticketTypeStats = ticketTypeStats;
+        this.salesByHourOfDay = salesByHourOfDay;
+        this.attendanceCount = attendanceCount;
+        this.refundedCount = refundedCount;
+        this.cancelledCount = cancelledCount;
+        this.totalOrders = totalOrders;
+        this.attendanceRate = totalTicketsSold > 0 ? (double) attendanceCount / totalTicketsSold * 100 : 0;
     }
 
     // Getters and Setters
@@ -41,6 +65,22 @@ public class EventStatsResponse {
 
     public List<HourlySales> getSalesByHourOfDay() { return salesByHourOfDay; }
     public void setSalesByHourOfDay(List<HourlySales> salesByHourOfDay) { this.salesByHourOfDay = salesByHourOfDay; }
+    
+    // New getters and setters
+    public long getAttendanceCount() { return attendanceCount; }
+    public void setAttendanceCount(long attendanceCount) { this.attendanceCount = attendanceCount; }
+    
+    public long getRefundedCount() { return refundedCount; }
+    public void setRefundedCount(long refundedCount) { this.refundedCount = refundedCount; }
+    
+    public long getCancelledCount() { return cancelledCount; }
+    public void setCancelledCount(long cancelledCount) { this.cancelledCount = cancelledCount; }
+    
+    public long getTotalOrders() { return totalOrders; }
+    public void setTotalOrders(long totalOrders) { this.totalOrders = totalOrders; }
+    
+    public double getAttendanceRate() { return attendanceRate; }
+    public void setAttendanceRate(double attendanceRate) { this.attendanceRate = attendanceRate; }
 
     public static class DailySales {
         private String date;
