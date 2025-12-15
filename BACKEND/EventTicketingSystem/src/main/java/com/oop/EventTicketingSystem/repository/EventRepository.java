@@ -10,4 +10,6 @@ import java.util.List;
 public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findByOrganizerId(Long organizerId);
     List<Event> findByStatus(Event.EventStatus status);
+    List<Event> findByStatusAndApprovalStatus(Event.EventStatus status, Event.ApprovalStatus approvalStatus);
+    List<Event> findByApprovalStatus(Event.ApprovalStatus approvalStatus);
 }
