@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/events/{eventId}/live")
@@ -28,7 +29,19 @@ public class EventLiveController {
      * Get live data for an event (public for ticket holders)
      */
     @GetMapping
-    public ResponseEntity<?> getLiveData(@PathVariable Long eventId) {
+    public ResponseEntity<?> getLiveData(
+            @PathVariable Long eventId,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        
+        if (userPrincipal == null) {
+            return ResponseEntity.status(401).body(Map.of("error", "Authentication required"));
+        }
+
+        // Allow organizers or valid ticket holders
+        if (!isOrganizer(eventId, userPrincipal) && !liveService.hasValidTicket(userPrincipal.getId(), eventId)) {
+            return ResponseEntity.status(403).body(Map.of("error", "You must have a valid ticket to access this event's live mode"));
+        }
+
         EventLiveData liveData = liveService.getLiveData(eventId);
         if (liveData == null) {
             return ResponseEntity.ok(Map.of(
@@ -274,6 +287,285 @@ public class EventLiveController {
         
         EventLiveData liveData = liveService.endLive(eventId);
         return ResponseEntity.ok(liveData);
+    }
+
+    // ==================== DIGITAL LIGHT SHOW ====================
+
+    /**
+     * Trigger Digital Light Show - sync all attendee phones to display a color
+     */
+    @PostMapping("/light-sync")
+    public ResponseEntity<?> triggerLightSync(
+            @PathVariable Long eventId,
+            @RequestBody Map<String, Object> body,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        
+        if (!isOrganizer(eventId, userPrincipal)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Only the event organizer can trigger light sync"));
+        }
+        
+        String color = (String) body.get("color");
+        String type = (String) body.getOrDefault("type", "SOLID");
+        Integer duration = body.get("duration") != null ? ((Number) body.get("duration")).intValue() : 10000;
+        Integer speed = body.get("speed") != null ? ((Number) body.get("speed")).intValue() : 50;
+        Integer intensity = body.get("intensity") != null ? ((Number) body.get("intensity")).intValue() : 100;
+        
+        if (color == null || color.isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Color is required"));
+        }
+        
+        liveService.triggerLightSync(eventId, color, type, duration, speed, intensity);
+        return ResponseEntity.ok(Map.of("success", true, "message", "Light sync triggered"));
+    }
+
+    /**
+     * Stop Digital Light Show
+     */
+    @PostMapping("/light-sync/stop")
+    public ResponseEntity<?> stopLightSync(
+            @PathVariable Long eventId,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        
+        if (!isOrganizer(eventId, userPrincipal)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Only the event organizer can stop light sync"));
+        }
+        
+        liveService.stopLightSync(eventId);
+        return ResponseEntity.ok(Map.of("success", true, "message", "Light sync stopped"));
+    }
+
+    // ==================== HYPE GAUGE (CLAP-O-METER) ====================
+
+    /**
+     * Add hype clicks (batched from frontend).
+     * Any authenticated user can contribute to the hype.
+     */
+    @PostMapping("/hype")
+    public ResponseEntity<?> addHype(
+            @PathVariable Long eventId,
+            @RequestBody Map<String, Integer> body,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        
+        if (userPrincipal == null) {
+            return ResponseEntity.status(401).body(Map.of("error", "Authentication required"));
+        }
+        
+        Integer count = body.get("count");
+        if (count == null || count <= 0) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Invalid count"));
+        }
+
+        // Check for ticket
+        if (!isOrganizer(eventId, userPrincipal) && !liveService.hasValidTicket(userPrincipal.getId(), eventId)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Ticket required"));
+        }
+        
+        // Limit individual batch size to prevent abuse
+        int safeCount = Math.min(count, 50);
+        
+        int newHypeLevel = liveService.addHype(eventId, safeCount);
+        return ResponseEntity.ok(Map.of(
+            "success", true,
+            "hypeLevel", newHypeLevel,
+            "added", safeCount
+        ));
+    }
+
+    /**
+     * Get current hype level for an event.
+     */
+    @GetMapping("/hype")
+    public ResponseEntity<?> getHypeLevel(@PathVariable Long eventId) {
+        int hypeLevel = liveService.getHypeLevel(eventId);
+        return ResponseEntity.ok(Map.of("hypeLevel", hypeLevel, "maxHype", 1000));
+    }
+
+    // ==================== PHOTO WALL (SOCIAL PROOF) ====================
+
+    /**
+     * Upload a photo to the event's photo wall.
+     * Any authenticated user can upload. Photos go to pending status.
+     */
+    @PostMapping("/photos")
+    public ResponseEntity<?> uploadPhoto(
+            @PathVariable Long eventId,
+            @RequestParam("file") MultipartFile file,
+            @RequestParam(value = "userName", required = false) String userName,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        
+        if (userPrincipal == null) {
+            return ResponseEntity.status(401).body(Map.of("error", "Authentication required"));
+        }
+
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "File is required"));
+        }
+
+        // Check for ticket
+        if (!isOrganizer(eventId, userPrincipal) && !liveService.hasValidTicket(userPrincipal.getId(), eventId)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Ticket required"));
+        }
+
+        // Validate file type
+        String contentType = file.getContentType();
+        if (contentType == null || !contentType.startsWith("image/")) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Only image files are allowed"));
+        }
+
+        try {
+            com.oop.EventTicketingSystem.model.EventLivePhoto photo = liveService.uploadPhoto(
+                eventId, 
+                file, 
+                userPrincipal.getId(),
+                userName != null ? userName : "Attendee"
+            );
+            return ResponseEntity.ok(Map.of(
+                "success", true,
+                "message", "Photo uploaded and pending approval",
+                "photo", photo
+            ));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    /**
+     * Get approved photos for public display (attendees + big screen).
+     */
+    @GetMapping("/photos/approved")
+    public ResponseEntity<?> getApprovedPhotos(
+            @PathVariable Long eventId,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        
+        if (userPrincipal == null) {
+            return ResponseEntity.status(401).body(Map.of("error", "Authentication required"));
+        }
+
+        if (!isOrganizer(eventId, userPrincipal) && !liveService.hasValidTicket(userPrincipal.getId(), eventId)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Ticket required"));
+        }
+
+        var photos = liveService.getApprovedPhotos(eventId);
+        return ResponseEntity.ok(photos);
+    }
+
+    /**
+     * Get pending photos for moderation (organizer only).
+     */
+    @GetMapping("/photos/pending")
+    public ResponseEntity<?> getPendingPhotos(
+            @PathVariable Long eventId,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        
+        if (!isOrganizer(eventId, userPrincipal)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Only the event organizer can view pending photos"));
+        }
+
+        var photos = liveService.getPendingPhotos(eventId);
+        long pendingCount = liveService.getPendingPhotoCount(eventId);
+        return ResponseEntity.ok(Map.of("photos", photos, "pendingCount", pendingCount));
+    }
+
+    /**
+     * Approve a photo (organizer only).
+     */
+    @PutMapping("/photos/{photoId}/approve")
+    public ResponseEntity<?> approvePhoto(
+            @PathVariable Long eventId,
+            @PathVariable Long photoId,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        
+        if (!isOrganizer(eventId, userPrincipal)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Only the event organizer can approve photos"));
+        }
+
+        try {
+            var photo = liveService.approvePhoto(photoId);
+            return ResponseEntity.ok(Map.of("success", true, "photo", photo));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    /**
+     * Reject a photo (organizer only).
+     */
+    @PutMapping("/photos/{photoId}/reject")
+    public ResponseEntity<?> rejectPhoto(
+            @PathVariable Long eventId,
+            @PathVariable Long photoId,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        
+        if (!isOrganizer(eventId, userPrincipal)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Only the event organizer can reject photos"));
+        }
+
+        try {
+            var photo = liveService.rejectPhoto(photoId);
+            return ResponseEntity.ok(Map.of("success", true, "photo", photo));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    /**
+     * Clear all approved photos (organizer only).
+     */
+    @DeleteMapping("/photos/approved")
+    public ResponseEntity<?> clearApprovedPhotos(
+            @PathVariable Long eventId,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        
+        if (!isOrganizer(eventId, userPrincipal)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Only the event organizer can clear photos"));
+        }
+
+        try {
+            liveService.deleteAllApprovedPhotos(eventId);
+            return ResponseEntity.ok(Map.of("success", true, "message", "All approved photos cleared"));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    /**
+     * Approve all pending photos (organizer only).
+     */
+    @PutMapping("/photos/approve-all")
+    public ResponseEntity<?> approveAllPhotos(
+            @PathVariable Long eventId,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        
+        if (!isOrganizer(eventId, userPrincipal)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Only the event organizer can approve photos"));
+        }
+
+        try {
+            int count = liveService.approveAllPhotos(eventId);
+            return ResponseEntity.ok(Map.of("success", true, "message", count + " photos approved", "count", count));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    /**
+     * Reject all pending photos (organizer only).
+     */
+    @PutMapping("/photos/reject-all")
+    public ResponseEntity<?> rejectAllPhotos(
+            @PathVariable Long eventId,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        
+        if (!isOrganizer(eventId, userPrincipal)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Only the event organizer can reject photos"));
+        }
+
+        try {
+            int count = liveService.rejectAllPhotos(eventId);
+            return ResponseEntity.ok(Map.of("success", true, "message", count + " photos rejected", "count", count));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
     }
 
     // ==================== HELPER METHODS ====================
