@@ -91,23 +91,23 @@ cd BACKEND/EventTicketingSystem
 1. Create a MySQL database for the application
 2. Update `src/main/resources/application.properties` with your database credentials:
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
-spring.datasource.username=your_username
-spring.datasource.password=your_password
+spring.datasource.url=jdbc:mysql://localhost:3306/YOUR_DATABASE_NAME
+spring.datasource.username=YOUR_DB_USERNAME
+spring.datasource.password=YOUR_DB_PASSWORD
 ```
 
 #### Configure OAuth2 (Optional)
 If you want to use Google Sign-In, update the following in `application.properties`:
 ```properties
-spring.security.oauth2.client.registration.google.client-id=your-client-id
-spring.security.oauth2.client.registration.google.client-secret=your-client-secret
+spring.security.oauth2.client.registration.google.client-id=YOUR_GOOGLE_CLIENT_ID
+spring.security.oauth2.client.registration.google.client-secret=YOUR_GOOGLE_CLIENT_SECRET
 ```
 
 #### Configure Email Service (Optional)
 For email notifications, update:
 ```properties
-spring.mail.username=your-email@gmail.com
-spring.mail.password=your-app-password
+spring.mail.username=YOUR_EMAIL@gmail.com
+spring.mail.password=YOUR_GMAIL_APP_PASSWORD
 ```
 
 #### Build and Run
