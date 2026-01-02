@@ -88,13 +88,19 @@ cd BACKEND/EventTicketingSystem
 ```
 
 #### Configure Database
-1. Create a MySQL database for the application
+1. Create a MySQL database for the application:
+```bash
+mysql -u root -p
+CREATE DATABASE YOUR_DATABASE_NAME;
+```
 2. Update `src/main/resources/application.properties` with your database credentials:
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/YOUR_DATABASE_NAME
 spring.datasource.username=YOUR_DB_USERNAME
 spring.datasource.password=YOUR_DB_PASSWORD
 ```
+
+**Note:** The application uses `spring.jpa.hibernate.ddl-auto=update` which automatically creates and updates database tables based on your JPA entities. No manual schema setup is required.
 
 #### Configure OAuth2 (Optional)
 If you want to use Google Sign-In, update the following in `application.properties`:
@@ -230,6 +236,7 @@ The system can also run in CLI mode for testing the ticket pool mechanism:
 cd BACKEND/EventTicketingSystem
 ./mvnw exec:java -Dexec.mainClass="com.oop.EventTicketingSystem.TicketingSystemCLI"
 ```
+**Note:** The CLI mode provides an interactive command-line interface for configuring and testing the multi-threaded ticket pool system without the web interface.
 
 ### Full Stack Mode
 1. Start the backend server (port 8080)
@@ -258,6 +265,7 @@ npm run lint
 ### JWT Token
 - Default expiration: 24 hours (86400000 ms)
 - Secret key configured in `application.properties`
+- **⚠️ IMPORTANT**: Change the JWT secret key in production! Use a strong, unique secret at least 256 bits for HS512 or HS256 algorithm
 - Refresh token mechanism available
 
 ### CORS Configuration
