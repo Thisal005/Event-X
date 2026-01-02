@@ -231,12 +231,12 @@ Event-X/
 ## 🎮 Running the Application
 
 ### CLI Mode (Backend Only)
-The system can also run in CLI mode for testing the ticket pool mechanism:
+The system includes a CLI mode for testing the ticket pool mechanism. The `TicketingSystemCLI` class implements `CommandLineRunner` and runs automatically when you start the Spring Boot application:
 ```bash
 cd BACKEND/EventTicketingSystem
-./mvnw exec:java -Dexec.mainClass="com.oop.EventTicketingSystem.TicketingSystemCLI"
+./mvnw spring-boot:run
 ```
-**Note:** The CLI mode provides an interactive command-line interface for configuring and testing the multi-threaded ticket pool system without the web interface.
+**Note:** The CLI interface will appear in the console, allowing you to configure and test the multi-threaded ticket pool system. This is useful for development and testing the core ticketing logic without the web interface.
 
 ### Full Stack Mode
 1. Start the backend server (port 8080)
@@ -265,7 +265,10 @@ npm run lint
 ### JWT Token
 - Default expiration: 24 hours (86400000 ms)
 - Secret key configured in `application.properties`
-- **⚠️ IMPORTANT**: Change the JWT secret key in production! Use a strong, unique secret at least 256 bits for HS512 or HS256 algorithm
+- **⚠️ IMPORTANT**: Change the JWT secret key in production! 
+  - HS256 requires at least 256 bits (32 characters)
+  - HS512 requires at least 512 bits (64 characters)
+  - Generate a secure key: `openssl rand -base64 64`
 - Refresh token mechanism available
 
 ### CORS Configuration
