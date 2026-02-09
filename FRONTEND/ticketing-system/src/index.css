@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 font-sans;
+  }
+}
+
+/* Rich Text Editor Content Styling */
+.event-description h1 {
+  @apply text-2xl font-bold mt-6 mb-4;
+}
+
+.event-description h2 {
+  @apply text-xl font-bold mt-5 mb-3;
+}
+
+.event-description h3 {
+  @apply text-lg font-bold mt-4 mb-2;
+}
+
+.event-description p {
+  @apply mb-4 leading-relaxed;
+}
+
+.event-description ul {
+  @apply list-disc list-inside mb-4 ml-4;
+}
+
+.event-description ol {
+  @apply list-decimal list-inside mb-4 ml-4;
+}
+
+.event-description li {
+  @apply mb-1;
+}
+
+.event-description strong {
+  @apply font-bold text-gray-900;
+}
+
+.event-description em {
+  @apply italic;
+}
+
+.event-description a {
+  @apply text-purple-600 hover:text-purple-700 underline;
+}
+
+.event-description blockquote {
+  @apply border-l-4 border-purple-200 pl-4 py-1 my-4 italic text-gray-600 bg-gray-50 rounded-r-lg;
+}
+
+/* React Quill Custom Overrides */
+.ql-editor {
+  @apply min-h-[150px] text-base leading-relaxed;
+}
+
+.ql-toolbar {
+  @apply rounded-t-xl border-gray-200 bg-gray-50 !important;
+}
+
+.ql-container {
+  @apply rounded-b-xl border-gray-200 bg-white !important;
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
