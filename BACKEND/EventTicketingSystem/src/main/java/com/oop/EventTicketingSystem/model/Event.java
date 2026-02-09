@@ -18,7 +18,7 @@ public class Event {
     @Column(nullable = false)
     private String name;
 
-    @Column(length = 1000)
+    @Column(columnDefinition = "LONGTEXT")
     private String description;
 
     @Column(nullable = false)
