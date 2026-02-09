@@ -78,6 +78,49 @@ public class EventLiveService {
         return liveData;
     }
 
+    @Transactional
+    public EventLiveData updateLayoutMode(Long eventId, LayoutMode mode) {
+        EventLiveData liveData = getOrCreateLiveData(eventId);
+        liveData.setLayoutMode(mode);
+        liveData = liveDataRepository.save(liveData);
+        
+        Map<String, Object> payload = new HashMap<>();
+        payload.put("type", "LAYOUT_UPDATE");
+        payload.put("layoutMode", mode);
+        payload.put("timestamp", LocalDateTime.now().toString());
+        messagingTemplate.convertAndSend(String.format(LIVE_TOPIC, eventId), payload);
+        
+        return liveData;
+    }
+
+    @Transactional
+    public EventLiveData updateBackground(Long eventId, BigScreenBackground background, String target) {
+        EventLiveData liveData = getOrCreateLiveData(eventId);
+
+        if (target == null || target.isEmpty()) target = "MAIN";
+
+        if ("LEFT".equalsIgnoreCase(target) || "ALL".equalsIgnoreCase(target)) {
+            liveData.setLeftBackground(background);
+        }
+        if ("RIGHT".equalsIgnoreCase(target) || "ALL".equalsIgnoreCase(target)) {
+            liveData.setRightBackground(background);
+        }
+        if ("MAIN".equalsIgnoreCase(target) || "ALL".equalsIgnoreCase(target)) {
+            liveData.setBigScreenBackground(background);
+        }
+
+        liveData = liveDataRepository.save(liveData);
+        
+        Map<String, Object> payload = new HashMap<>();
+        payload.put("type", "BACKGROUND_UPDATE");
+        payload.put("config", background);
+        payload.put("target", target); // "MAIN", "LEFT", "RIGHT", "ALL"
+        payload.put("timestamp", LocalDateTime.now().toString());
+        messagingTemplate.convertAndSend(String.format(LIVE_TOPIC, eventId), payload);
+        
+        return liveData;
+    }
+
     // Schedule Management
     @Transactional
     public EventLiveData addScheduleItem(Long eventId, LiveScheduleItem item) {
@@ -331,6 +374,16 @@ public class EventLiveService {
         payload.put("type", "HYPE_UPDATE");
         payload.put("hypeLevel", hypeLevel);
         payload.put("maxHype", MAX_HYPE_LEVEL);
+        
+        // Calculate Energy Phase
+        double percentage = (double) hypeLevel / MAX_HYPE_LEVEL * 100;
+        CrowdEnergyPhase phase;
+        if (percentage <= 25) phase = CrowdEnergyPhase.CALM;
+        else if (percentage <= 50) phase = CrowdEnergyPhase.WARM;
+        else if (percentage <= 75) phase = CrowdEnergyPhase.WILD;
+        else phase = CrowdEnergyPhase.INSANE;
+        
+        payload.put("energyPhase", phase);
         payload.put("timestamp", LocalDateTime.now().toString());
         
         String destination = String.format(LIVE_TOPIC, eventId);
@@ -539,5 +592,13 @@ public class EventLiveService {
         messagingTemplate.convertAndSend(destination, payload);
         
         return pendingPhotos.size();
+    }
+    /**
+     * Upload a background video for the big screen.
+     */
+    public String uploadBackgroundVideo(Long eventId, MultipartFile file) {
+        String fileName = fileStorageService.storeFile(file);
+        // In production, this should likely be configured via properties
+        return "http://localhost:8080/uploads/" + fileName;
     }
 }

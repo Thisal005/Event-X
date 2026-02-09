@@ -43,13 +43,13 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
             String jwt = parseJwt(request);
             
             if (jwt != null) {
-                log.debug("JWT token found for {} {}", method, path);
+                log.info("JWT token found for {} {}", method, path);
                 
                 if (jwtUtils.validateJwtToken(jwt)) {
                     String email = jwtUtils.getUserNameFromJwtToken(jwt);
                     String roles = jwtUtils.getRolesFromJwtToken(jwt);
                     
-                    log.debug("JWT valid, extracting user: {} with roles: {}", email, roles);
+                    log.info("JWT valid, extracting user: {} with roles: {}", email, roles);
 
                     // Check if this is a Gatekeeper token
                     if (roles != null && roles.contains("GATEKEEPER")) {
@@ -70,7 +70,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
                         request.setAttribute("gatekeeperEventId", gatekeeperEventId);
                         
                         SecurityContextHolder.getContext().setAuthentication(authentication);
-                        log.debug("Security context set for gatekeeper: {} (event: {})", email, gatekeeperEventId);
+                        log.info("Security context set for gatekeeper: {} (event: {})", email, gatekeeperEventId);
                     } else {
                         // Regular user authentication
                         UserDetails userDetails = customUserDetailsService.loadUserByUsername(email);
@@ -85,13 +85,13 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
                         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
                         SecurityContextHolder.getContext().setAuthentication(authentication);
-                        log.debug("Security context set for user: {}", email);
+                        log.info("Security context set for user: {}", email);
                     }
                 } else {
-                    log.warn("Invalid JWT token for request: {} {}", method, path);
+                    log.error("Invalid JWT token for request: {} {}", method, path);
                 }
             } else {
-                log.debug("No JWT token found for {} {} (Authorization header: {})", 
+                log.info("No JWT token found for {} {} (Authorization header: {})", 
                         method, path, 
                         request.getHeader("Authorization") != null ? "present but malformed" : "missing");
             }
