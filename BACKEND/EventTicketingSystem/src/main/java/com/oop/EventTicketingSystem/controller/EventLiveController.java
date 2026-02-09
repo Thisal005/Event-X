@@ -126,6 +126,52 @@ public class EventLiveController {
         return ResponseEntity.ok(liveData);
     }
 
+    @PutMapping("/layout")
+    public ResponseEntity<?> updateLayout(
+            @PathVariable Long eventId,
+            @RequestBody Map<String, String> body,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        
+        if (!isOrganizer(eventId, userPrincipal)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Only the event organizer can update layout"));
+        }
+        
+        try {
+            LayoutMode mode = LayoutMode.valueOf(body.get("mode"));
+            EventLiveData liveData = liveService.updateLayoutMode(eventId, mode);
+            return ResponseEntity.ok(liveData);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Invalid layout mode"));
+        }
+    }
+
+    @PutMapping("/background")
+    public ResponseEntity<?> updateBackground(
+            @PathVariable Long eventId,
+            @RequestBody Map<String, Object> body,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        
+        if (!isOrganizer(eventId, userPrincipal)) {
+            return ResponseEntity.status(403).body(Map.of("error", "Only the event organizer can update background"));
+        }
+        
+        try {
+            // Manual mapping from Map to BigScreenBackground
+            BigScreenBackground bg = new BigScreenBackground();
+            bg.setType((String) body.get("type"));
+            bg.setUrl((String) body.get("url"));
+            if (body.get("loop") != null) bg.setLoop((Boolean) body.get("loop"));
+            if (body.get("opacity") != null) bg.setOpacity(((Number) body.get("opacity")).floatValue());
+            
+            String target = (String) body.getOrDefault("target", "MAIN");
+            
+            EventLiveData liveData = liveService.updateBackground(eventId, bg, target);
+            return ResponseEntity.ok(liveData);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Invalid background config: " + e.getMessage()));
+        }
+    }
+
     // ==================== SCHEDULE MANAGEMENT ====================
 
     @PostMapping("/schedule")
@@ -569,6 +615,16 @@ public class EventLiveController {
     }
 
     // ==================== HELPER METHODS ====================
+
+    @PostMapping("/background/upload")
+    public ResponseEntity<?> uploadBackgroundVideo(@PathVariable Long eventId, @RequestParam("file") MultipartFile file) {
+        try {
+            String videoUrl = liveService.uploadBackgroundVideo(eventId, file);
+            return ResponseEntity.ok(Map.of("url", videoUrl));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
 
     private boolean isOrganizer(Long eventId, UserPrincipal userPrincipal) {
         if (userPrincipal == null) return false;

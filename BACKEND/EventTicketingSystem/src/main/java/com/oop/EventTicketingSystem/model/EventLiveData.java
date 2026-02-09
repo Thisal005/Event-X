@@ -36,6 +36,31 @@ public class EventLiveData {
     @JoinColumn(name = "active_poll_id")
     private FlashPoll activePoll; // null = no poll running
 
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "ENUM('SINGLE', 'DUAL', 'TRIPLE') DEFAULT 'SINGLE'")
+    private LayoutMode layoutMode = LayoutMode.SINGLE;
+
+    @Embedded
+    private BigScreenBackground bigScreenBackground;
+
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "type", column = @Column(name = "bg_left_type")),
+        @AttributeOverride(name = "url", column = @Column(name = "bg_left_url")),
+        @AttributeOverride(name = "loop", column = @Column(name = "bg_left_loop")),
+        @AttributeOverride(name = "opacity", column = @Column(name = "bg_left_opacity"))
+    })
+    private BigScreenBackground leftBackground;
+
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "type", column = @Column(name = "bg_right_type")),
+        @AttributeOverride(name = "url", column = @Column(name = "bg_right_url")),
+        @AttributeOverride(name = "loop", column = @Column(name = "bg_right_loop")),
+        @AttributeOverride(name = "opacity", column = @Column(name = "bg_right_opacity"))
+    })
+    private BigScreenBackground rightBackground;
+
     private boolean isLive = false; // Organizer controls when live mode is active
 
     public EventLiveData() {
@@ -117,5 +142,37 @@ public class EventLiveData {
 
     public void setLive(boolean live) {
         isLive = live;
+    }
+
+    public LayoutMode getLayoutMode() {
+        return layoutMode;
+    }
+
+    public void setLayoutMode(LayoutMode layoutMode) {
+        this.layoutMode = layoutMode;
+    }
+
+    public BigScreenBackground getBigScreenBackground() {
+        return bigScreenBackground;
+    }
+
+    public void setBigScreenBackground(BigScreenBackground bigScreenBackground) {
+        this.bigScreenBackground = bigScreenBackground;
+    }
+
+    public BigScreenBackground getLeftBackground() {
+        return leftBackground;
+    }
+
+    public void setLeftBackground(BigScreenBackground leftBackground) {
+        this.leftBackground = leftBackground;
+    }
+
+    public BigScreenBackground getRightBackground() {
+        return rightBackground;
+    }
+
+    public void setRightBackground(BigScreenBackground rightBackground) {
+        this.rightBackground = rightBackground;
     }
 }
