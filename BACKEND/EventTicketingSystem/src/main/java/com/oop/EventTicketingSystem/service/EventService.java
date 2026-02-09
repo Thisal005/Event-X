@@ -81,9 +81,11 @@ public class EventService {
 
     public List<Event> getAllEvents() {
         // Only return events that are both PUBLISHED and APPROVED
-        return eventRepository.findByStatusAndApprovalStatus(
+        // Only return events that are both PUBLISHED and APPROVED and in the future
+        return eventRepository.findByStatusAndApprovalStatusAndDateAfter(
             Event.EventStatus.PUBLISHED, 
-            Event.ApprovalStatus.APPROVED
+            Event.ApprovalStatus.APPROVED,
+            java.time.LocalDateTime.now()
         );
     }
 
