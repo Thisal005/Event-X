@@ -26,3 +26,22 @@ jobs:
             
             -   name:  Build Frontend
                 run:    npm run build
+        
+    backend-ci:
+        runs-on: ubuntu-latest
+        defaults:
+            run:    
+                working-directory:  ./BACKEND/EventTicketingSystem
+        steps:
+            -   name:   Checkout Code
+                uses:   actions/checkout@v4
+
+            -   name:   Setup JDK
+                uses:   actions/setup-java@v4
+                with:
+                    distribution: 'temurin'
+                    java-version: '17'
+                    cache: 'maven'
+            
+            -   name:   Build and test with Maven
+                run:    mvn clean verify
