@@ -1,10 +1,8 @@
 import api from './axios';
 
 export const createEvent = async (eventData) => {
-    // Content-Type: null tells Axios to remove the default Content-Type header
-    // allowing the browser to set it correctly with the boundary for FormData
-    const config = eventData instanceof FormData ? { headers: { 'Content-Type': null } } : {};
-    const response = await api.post('/events', eventData, config);
+    // Content-Type handling for FormData is managed by the axios interceptor
+    const response = await api.post('/events', eventData);
     return response.data;
 };
 
