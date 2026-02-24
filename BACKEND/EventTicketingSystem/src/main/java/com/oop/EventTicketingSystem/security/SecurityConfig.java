@@ -87,7 +87,7 @@ public class SecurityConfig {
                 // Allow preflight OPTIONS requests
                 .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
                 // Public auth endpoints
-                .requestMatchers("/api/auth/**", "/login/**", "/oauth2/**").permitAll()
+                .requestMatchers("/api/auth/**", "/api/v1/auth/**", "/login/**", "/oauth2/**").permitAll()
                 // Error endpoint - allow public access to see actual error messages (e.g. max upload size)
                 .requestMatchers("/error").permitAll()
                 // WebSocket endpoint
