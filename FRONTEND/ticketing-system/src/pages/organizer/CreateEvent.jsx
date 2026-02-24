@@ -6,6 +6,8 @@ import {
     Eye, Check, ArrowLeft, ArrowRight, Loader2
 } from 'lucide-react';
 import DashboardHeader from '../../components/DashboardHeader';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const CreateEvent = () => {
     const navigate = useNavigate();
@@ -52,6 +54,8 @@ const CreateEvent = () => {
     const handleSubmit = async () => {
         setLoading(true);
         try {
+            // Proceed with form submission
+
             const data = new FormData();
 
             const eventObj = {
@@ -70,10 +74,20 @@ const CreateEvent = () => {
                 data.append('file', formData.bannerImage);
             }
 
+            console.log("Submitting Event Data:", eventObj);
+            console.log("Submitting FormData keys:", [...data.keys()]);
+
             await createEvent(data);
             navigate('/dashboard/organizer');
         } catch (error) {
             console.error("Failed to create event", error);
+
+            if (error.response && error.response.status === 401) {
+                alert("Session expired. Please login again.");
+                navigate('/login');
+                return;
+            }
+
             alert("Failed to create event");
         } finally {
             setLoading(false);
@@ -157,14 +171,14 @@ const CreateEvent = () => {
 
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
-                                            <textarea
-                                                name="description"
-                                                rows="4"
-                                                placeholder="Tell people what your event is about..."
-                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all outline-none resize-none"
-                                                value={formData.description}
-                                                onChange={handleChange}
-                                            />
+                                            <div className="bg-white">
+                                                <ReactQuill
+                                                    theme="snow"
+                                                    value={formData.description}
+                                                    onChange={(value) => setFormData({ ...formData, description: value })}
+                                                    className="h-64 mb-12"
+                                                />
+                                            </div>
                                         </div>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -261,7 +275,7 @@ const CreateEvent = () => {
                                                     />
                                                 </div>
                                                 <div className="w-28 space-y-2">
-                                                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Price ($)</label>
+                                                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Price (LKR)</label>
                                                     <input
                                                         type="number"
                                                         placeholder="0.00"
@@ -348,7 +362,7 @@ const CreateEvent = () => {
                                     </div>
                                     <div className="absolute top-4 right-4">
                                         <span className="bg-purple-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg shadow-purple-600/30">
-                                            ${minPrice > 0 ? minPrice : 'Free'}
+                                            {minPrice > 0 ? `LKR ${minPrice}` : 'Free'}
                                         </span>
                                     </div>
                                 </div>
@@ -371,9 +385,10 @@ const CreateEvent = () => {
                                         </span>
                                     </div>
 
-                                    <p className="text-sm text-gray-500 border-t border-gray-100 pt-4 mt-4 line-clamp-3">
-                                        {formData.description || 'Event description will appear here...'}
-                                    </p>
+                                    <div
+                                        className="text-sm text-gray-500 border-t border-gray-100 pt-4 mt-4 line-clamp-3 prose prose-sm max-w-none"
+                                        dangerouslySetInnerHTML={{ __html: formData.description || 'Event description will appear here...' }}
+                                    />
 
                                     {/* Action Buttons (Only visible in preview mode fully) */}
                                     {viewMode === 'preview' && (
@@ -405,7 +420,7 @@ const CreateEvent = () => {
                                         {formData.ticketTypes.map((t, i) => (
                                             <div key={i} className="flex justify-between items-center text-sm">
                                                 <span className="text-gray-600">{t.name || 'Ticket'}</span>
-                                                <span className="font-bold text-gray-900">${t.price} <span className="text-gray-400 font-normal">x {t.quantity}</span></span>
+                                                <span className="font-bold text-gray-900">LKR {t.price} <span className="text-gray-400 font-normal">x {t.quantity}</span></span>
                                             </div>
                                         ))}
                                         <div className="border-t border-gray-100 pt-3 mt-3 flex justify-between items-center font-bold text-gray-900">
