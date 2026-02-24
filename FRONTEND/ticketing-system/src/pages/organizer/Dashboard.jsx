@@ -48,7 +48,7 @@ const OrganizerDashboard = () => {
         },
         {
             label: 'Total Revenue',
-            value: '$12,450',
+            value: 'LKR 12,450',
             icon: DollarSign,
             color: 'text-green-600',
             bg: 'bg-green-50',
@@ -211,7 +211,7 @@ const OrganizerDashboard = () => {
 
                                     <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                                         <span className="text-sm font-medium text-gray-500">
-                                            <span className="font-bold text-gray-900">$0.00</span> raised
+                                            <span className="font-bold text-gray-900">LKR 0.00</span> raised
                                         </span>
                                         <Link
                                             to={`/dashboard/organizer/events/${event.id}`}
