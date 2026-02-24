@@ -7,7 +7,7 @@ WORKDIR /BACKEND/EventTicketingSystem
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 
-# Make the Maven wrapper executable
+# Make the Maven wrapper executablee
 RUN chmod +x mvnw
 
 # Download dependencies to cache them in a separate Docker layer
