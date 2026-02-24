@@ -184,7 +184,7 @@ const EventDetails = () => {
             if (response.valid) {
                 setDiscount(response.discountAmount);
                 setIsPromoValid(true);
-                setPromoMessage({ type: 'success', text: `Coupon applied! You saved $${response.discountAmount}` });
+                setPromoMessage({ type: 'success', text: `Coupon applied! You saved LKR ${response.discountAmount}` });
             }
         } catch (error) {
             setDiscount(0);
@@ -213,6 +213,13 @@ const EventDetails = () => {
             alert("Failed to join waitlist: " + (error.response?.data || error.message));
         } finally {
             setJoiningWaitlist(prev => ({ ...prev, [ticketTypeId]: false }));
+        }
+    };
+
+    const scrollToTickets = () => {
+        const section = document.getElementById('ticketing-section');
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
         }
     };
 
@@ -333,6 +340,13 @@ const EventDetails = () => {
                                             {event.venue}
                                         </div>
                                     </div>
+                                    <button
+                                        onClick={scrollToTickets}
+                                        className="mt-8 px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-purple-500/50 flex items-center gap-2 transform hover:-translate-y-1"
+                                    >
+                                        <CreditCard className="w-5 h-5" />
+                                        Buy Now
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -402,12 +416,13 @@ const EventDetails = () => {
                             <div className="lg:col-span-2 space-y-10">
                                 <section>
                                     <h2 className="text-2xl font-bold text-gray-900 mb-4">About the Event</h2>
-                                    <p className="text-gray-600 leading-relaxed whitespace-pre-wrap text-lg">
-                                        {event.description || "No description provided."}
-                                    </p>
+                                    <div
+                                        className="text-gray-600 leading-relaxed text-lg prose prose-purple max-w-none event-description"
+                                        dangerouslySetInnerHTML={{ __html: event.description || "No description provided." }}
+                                    />
                                 </section>
 
-                                <section>
+                                <section id="ticketing-section">
                                     <h2 className="text-2xl font-bold text-gray-900 mb-6">Ticketing</h2>
                                     <div className="space-y-4">
                                         {event.ticketTypes?.map((ticket) => {
@@ -442,7 +457,7 @@ const EventDetails = () => {
                                                             {ticketUrgency?.nextPrice && (
                                                                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
                                                                     <TrendingUp className="w-3 h-3" />
-                                                                    Next: ${ticketUrgency.nextPrice}
+                                                                    Next: LKR {ticketUrgency.nextPrice}
                                                                 </span>
                                                             )}
                                                         </div>
@@ -452,7 +467,7 @@ const EventDetails = () => {
                                                         <div className="flex-1">
                                                             <div className="flex items-center justify-between mb-2">
                                                                 <h3 className="font-bold text-lg text-gray-900">{ticket.name}</h3>
-                                                                <span className="text-xl font-bold text-purple-600">${ticket.price}</span>
+                                                                <span className="text-xl font-bold text-purple-600">LKR {ticket.price}</span>
                                                             </div>
                                                             <p className="text-sm text-gray-500 flex items-center gap-1">
                                                                 {remaining > 0 ? (
@@ -529,7 +544,7 @@ const EventDetails = () => {
                                                     <div className="text-gray-600">
                                                         <span className="font-bold text-gray-900">{qty}x</span> {ticket.name}
                                                     </div>
-                                                    <span className="font-medium text-gray-900">${(qty * ticket.price).toFixed(2)}</span>
+                                                    <span className="font-medium text-gray-900">LKR {(qty * ticket.price).toFixed(2)}</span>
                                                 </div>
                                             );
                                         })}
@@ -581,14 +596,14 @@ const EventDetails = () => {
                                         {isPromoValid && (
                                             <div className="flex justify-between items-center text-green-600">
                                                 <span className="text-sm font-medium">Discount</span>
-                                                <span className="font-bold">-${discount.toFixed(2)}</span>
+                                                <span className="font-bold">-LKR {discount.toFixed(2)}</span>
                                             </div>
                                         )}
 
                                         <div className="border-t border-gray-100 pt-4 flex justify-between items-center">
                                             <span className="text-base font-bold text-gray-600">Final Total</span>
                                             <span className="text-3xl font-extrabold text-gray-900">
-                                                ${(calculateTotal() - discount).toFixed(2)}
+                                                LKR {(calculateTotal() - discount).toFixed(2)}
                                             </span>
                                         </div>
                                     </div>
