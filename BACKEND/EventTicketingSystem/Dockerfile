@@ -7,6 +7,8 @@ WORKDIR /BACKEND/EventTicketingSystem
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 
+# Download dependencies to cache them in a separate Docker layer
+RUN ./mvnw dependency:go-offline
 
 COPY src ./src
 RUN ./mvnw clean package -DskipTests
