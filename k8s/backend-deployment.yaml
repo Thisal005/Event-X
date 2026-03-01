@@ -28,7 +28,7 @@ spec:
           value: eventxadmin
         - name: DB_PASSWORD
           valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: mysql-password
+            envFrom:
+            - secretRef:
+                name: eventx-backend-secret
         
