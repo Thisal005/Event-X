@@ -28,7 +28,53 @@ spec:
           value: eventxadmin
         - name: DB_PASSWORD
           valueFrom:
-            envFrom:
-            - secretRef:
-                name: eventx-backend-secret
+            secretKeyRef:
+              name: eventx-backend-secret
+              key: DB_PASSWORD
+        - name: GOOGLE_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: eventx-backend-secret
+              key: GOOGLE_CLIENT_ID
+        - name: GOOGLE_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: eventx-backend-secret
+              key: GOOGLE_CLIENT_SECRET
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: eventx-backend-secret
+              key: JWT_SECRET
+        - name: JWT_EXPIRATION_MS
+          valueFrom:
+            secretKeyRef:
+              name: eventx-backend-secret
+              key: JWT_EXPIRATION_MS
+        - name: QR_SECRET_SALT
+          valueFrom:
+            secretKeyRef:
+              name: eventx-backend-secret
+              key: QR_SECRET_SALT
+        - name: MAIL_HOST
+          valueFrom:
+            secretKeyRef:
+              name: eventx-backend-secret
+              key: MAIL_HOST
+        - name: MAIL_PORT
+          valueFrom:
+            secretKeyRef:
+              name: eventx-backend-secret
+              key: MAIL_PORT
+        - name: MAIL_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: eventx-backend-secret
+              key: MAIL_USERNAME
+        - name: MAIL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: eventx-backend-secret
+              key: MAIL_PASSWORD
+              
         
