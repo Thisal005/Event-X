@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: eventx-frontend
-        image: acr.azurecr.io/eventx-frontend:v1
+        image: eventxrg.azurecr.io/eventx-frontend:v1
         ports:
         - containerPort: 80

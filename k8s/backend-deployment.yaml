@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: eventx-backend
-        image: acr.azurecr.io/eventx-backend:v1
+        image: eventxrg.azurecr.io/eventx-backend:v1
         ports:
         - containerPort: 8080
         env:
