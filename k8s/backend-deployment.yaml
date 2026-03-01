@@ -20,17 +20,21 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        - name: DB_HOST
-          value: event-mysql-server.mysql.database.azure.com
-        - name: DB_NAME
-          value: eventxdb
-        - name: DB_USER
+        - name: SPRING_PROFILES_ACTIVE
+          value: prod
+        - name: DATABASE_URL
+          value: jdbc:mysql://event-mysql-server.mysql.database.azure.com:3306/eventxdb?useSSL=true&requireSSL=true
+        - name: DATABASE_USERNAME
           value: eventxadmin
-        - name: DB_PASSWORD
+        - name: DATABASE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: eventx-backend-secret
               key: DB_PASSWORD
+        - name: CORS_ALLOWED_ORIGINS
+          value: http://20.44.206.26
+        - name: FRONTEND_URL
+          value: http://20.44.206.26
         - name: GOOGLE_CLIENT_ID
           valueFrom:
             secretKeyRef:

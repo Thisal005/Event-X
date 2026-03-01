@@ -1,17 +1,24 @@
 package com.oop.EventTicketingSystem.controller;
 
-import com.oop.EventTicketingSystem.model.PromoCode;
-import com.oop.EventTicketingSystem.service.PromoCodeService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.oop.EventTicketingSystem.model.PromoCode;
+import com.oop.EventTicketingSystem.service.PromoCodeService;
 
 @RestController
 @RequestMapping("/api/promo-codes")
-@CrossOrigin(origins = "http://localhost:5173")
 public class PromoCodeController {
 
     @Autowired

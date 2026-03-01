@@ -1,20 +1,23 @@
 package com.oop.EventTicketingSystem.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.oop.EventTicketingSystem.model.TicketType;
 import com.oop.EventTicketingSystem.model.User;
 import com.oop.EventTicketingSystem.repository.TicketTypeRepository;
 import com.oop.EventTicketingSystem.repository.UserRepository;
 import com.oop.EventTicketingSystem.security.UserPrincipal;
 import com.oop.EventTicketingSystem.service.WaitlistService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/waitlist")
-@CrossOrigin(origins = "http://localhost:5173")
 public class WaitlistController {
 
     @Autowired
