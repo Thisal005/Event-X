@@ -1,5 +1,16 @@
 package com.oop.EventTicketingSystem.service;
 
+import com.oop.EventTicketingSystem.model.*;
+import com.oop.EventTicketingSystem.repository.EventLiveDataRepository;
+import com.oop.EventTicketingSystem.repository.EventLivePhotoRepository;
+import com.oop.EventTicketingSystem.repository.EventRepository;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -7,27 +18,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
-
-import com.oop.EventTicketingSystem.model.BigScreenBackground;
-import com.oop.EventTicketingSystem.model.CrowdEnergyPhase;
-import com.oop.EventTicketingSystem.model.Event;
-import com.oop.EventTicketingSystem.model.EventLiveData;
-import com.oop.EventTicketingSystem.model.EventLivePhoto;
-import com.oop.EventTicketingSystem.model.FlashPoll;
-import com.oop.EventTicketingSystem.model.LayoutMode;
-import com.oop.EventTicketingSystem.model.LiveScheduleItem;
-import com.oop.EventTicketingSystem.model.LostAndFoundPost;
-import com.oop.EventTicketingSystem.model.Ticket;
-import com.oop.EventTicketingSystem.repository.EventLiveDataRepository;
-import com.oop.EventTicketingSystem.repository.EventLivePhotoRepository;
-import com.oop.EventTicketingSystem.repository.EventRepository;
 
 @Service
 public class EventLiveService {
@@ -413,8 +403,9 @@ public class EventLiveService {
             throw new RuntimeException("You can only upload a maximum of 5 photos per ticket.");
         }
 
-        // Store the file in Azure Blob Storage
-        String imageUrl = fileStorageService.storeFile(file);
+        // Store the file
+        String fileName = fileStorageService.storeFile(file);
+        String imageUrl = "http://localhost:8080/uploads/" + fileName;
 
         // Create photo record
         EventLivePhoto photo = new EventLivePhoto(eventId, imageUrl);
@@ -519,7 +510,10 @@ public class EventLiveService {
         // Delete physical files
         for (EventLivePhoto photo : approvedPhotos) {
             try {
-                fileStorageService.deleteFile(photo.getImageUrl());
+                // Extract filename from URL (assuming format http://localhost:8080/uploads/filename)
+                String fileUrl = photo.getImageUrl();
+                String fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+                fileStorageService.deleteFile(fileName);
             } catch (Exception e) {
                 // Log but continue deleting other photos/records
                 System.err.println("Failed to delete file for photo " + photo.getId() + ": " + e.getMessage());
@@ -577,7 +571,9 @@ public class EventLiveService {
         // Delete physical files for rejected photos
         for (EventLivePhoto photo : pendingPhotos) {
             try {
-                fileStorageService.deleteFile(photo.getImageUrl());
+                String fileUrl = photo.getImageUrl();
+                String fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+                fileStorageService.deleteFile(fileName);
             } catch (Exception e) {
                 System.err.println("Failed to delete file for photo " + photo.getId() + ": " + e.getMessage());
             }
@@ -601,6 +597,8 @@ public class EventLiveService {
      * Upload a background video for the big screen.
      */
     public String uploadBackgroundVideo(Long eventId, MultipartFile file) {
-        return fileStorageService.storeFile(file);
+        String fileName = fileStorageService.storeFile(file);
+        // In production, this should likely be configured via properties
+        return "http://localhost:8080/uploads/" + fileName;
     }
 }
