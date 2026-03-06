@@ -54,8 +54,7 @@ public class EventController {
         EventRequest eventRequest = objectMapper.readValue(eventRequestStr, EventRequest.class);
         
         if (file != null && !file.isEmpty()) {
-            String fileName = fileStorageService.storeFile(file);
-            String fileUrl = "http://localhost:8080/uploads/" + fileName;
+            String fileUrl = fileStorageService.storeFile(file);
             eventRequest.setBannerImage(fileUrl);
         }
 
@@ -103,8 +102,7 @@ public class EventController {
         EventRequest eventRequest = objectMapper.readValue(eventRequestStr, EventRequest.class);
         
         if (file != null && !file.isEmpty()) {
-            String fileName = fileStorageService.storeFile(file);
-            String fileUrl = "http://localhost:8080/uploads/" + fileName;
+            String fileUrl = fileStorageService.storeFile(file);
             eventRequest.setBannerImage(fileUrl);
         }
         
