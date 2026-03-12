@@ -34,7 +34,7 @@ function App() {
     }, [token, dispatch]); // Remove 'user' from dependencies to prevent re-fetching
 
     return (
-        <Router>
+        <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">
                 <Routes>
                     <Route path="/login" element={!isAuthenticated ? <Login /> : <Navigate to="/" />} />

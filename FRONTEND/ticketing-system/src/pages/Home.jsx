@@ -17,7 +17,7 @@ const Home = () => {
         const fetchEvents = async () => {
             try {
                 const data = await getAllEvents();
-                setEvents(data);
+                setEvents(Array.isArray(data) ? data : []);
             } catch (error) {
                 console.error("Failed to fetch events", error);
             } finally {
