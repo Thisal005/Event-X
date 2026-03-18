@@ -1,4 +1,4 @@
-name:   Plan-X CI
+name:   Plan-X CI/CD
 
 on:
     push:

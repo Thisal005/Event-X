@@ -70,7 +70,7 @@ const EventStatsModal = ({ event, onClose }) => {
 
         const client = new Client({
             // Create SockJS inside the factory - this is important!
-            webSocketFactory: () => new SockJS('http://localhost:8080/ws'),
+            webSocketFactory: () => new SockJS(import.meta.env.VITE_WS_URL || '/ws'),
             reconnectDelay: 5000,
             heartbeatIncoming: 4000,
             heartbeatOutgoing: 4000,

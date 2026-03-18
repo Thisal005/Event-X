@@ -35,7 +35,7 @@ const PollBigScreen = () => {
     // WebSocket connection for real-time updates
     useEffect(() => {
         const client = new Client({
-            webSocketFactory: () => new SockJS('http://localhost:8080/ws'),
+            webSocketFactory: () => new SockJS(import.meta.env.VITE_WS_URL || '/ws'),
             onConnect: () => {
                 console.log('Big Screen connected to Live WebSocket');
                 client.subscribe(`/topic/event/${eventId}/live`, (message) => {

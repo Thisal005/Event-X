@@ -97,7 +97,7 @@ const LiveControlPanel = ({ eventId }) => {
     // WebSocket connection
     useEffect(() => {
         const client = new Client({
-            webSocketFactory: () => new SockJS('http://localhost:8080/ws'),
+            webSocketFactory: () => new SockJS(import.meta.env.VITE_WS_URL || '/ws'),
             onConnect: () => {
                 console.log('Organizer connected to Live WebSocket');
                 client.subscribe(`/topic/event/${eventId}/live`, (msg) => {
